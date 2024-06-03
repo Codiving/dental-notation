@@ -162,8 +162,8 @@ const UNIVERSAL_BABY_TEETH = [
 ] as const;
 type UniversalBabyTeeth = (typeof UNIVERSAL_BABY_TEETH)[number];
 
-const UNIVERSAL_TEETH = [
+export const UNIVERSAL_TEETH = [
   ...UNIVERSAL_PERMANENT_TEETH,
   ...UNIVERSAL_BABY_TEETH
 ] as const;
-type UniversalTeeth = (typeof UNIVERSAL_TEETH)[number];
+export type UniversalTeeth = (typeof UNIVERSAL_TEETH)[number];

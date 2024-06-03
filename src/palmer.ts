@@ -154,5 +154,8 @@ const PALMER_BABY_TEETH = [
 ] as const;
 type PalmerBabyTeeth = (typeof PALMER_BABY_TEETH)[number];
 
-const PALMER_TEETH = [...PALMER_PERMANENT_TEETH, ...PALMER_BABY_TEETH] as const;
-type PalmerTeeth = (typeof PALMER_TEETH)[number];
+export const PALMER_TEETH = [
+  ...PALMER_PERMANENT_TEETH,
+  ...PALMER_BABY_TEETH
+] as const;
+export type PalmerTeeth = (typeof PALMER_TEETH)[number];

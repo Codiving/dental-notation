@@ -102,5 +102,5 @@ const FDI_BABY_TEETH = [
 ] as const;
 type FdiBabyTeeth = (typeof FDI_BABY_TEETH)[number];
 
-const FDI_TEETH = [...FDI_PERMANENT_TEETH, ...FDI_BABY_TEETH] as const;
-type FdiTeeth = (typeof FDI_TEETH)[number];
+export const FDI_TEETH = [...FDI_PERMANENT_TEETH, ...FDI_BABY_TEETH] as const;
+export type FdiTeeth = (typeof FDI_TEETH)[number];
