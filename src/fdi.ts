@@ -1,7 +1,7 @@
-const FDI_PERMANENT_TEETH_UPPER_LEFT = [
+export const FDI_PERMANENT_TEETH_UPPER_LEFT = [
   18, 17, 16, 15, 14, 13, 12, 11
 ] as const;
-const FDI_PERMANENT_TEETH_UPPER_RIGHT = [
+export const FDI_PERMANENT_TEETH_UPPER_RIGHT = [
   21, 22, 23, 24, 25, 26, 27, 28
 ] as const;
 const FDI_PERMANENT_TEETH_UPPER = [
@@ -9,16 +9,16 @@ const FDI_PERMANENT_TEETH_UPPER = [
   ...FDI_PERMANENT_TEETH_UPPER_RIGHT
 ] as const;
 
-type FdiPermanentTeethUpperLeft =
+export type FdiPermanentTeethUpperLeft =
   (typeof FDI_PERMANENT_TEETH_UPPER_LEFT)[number];
-type FdiPermanentTeethUpperRight =
+export type FdiPermanentTeethUpperRight =
   (typeof FDI_PERMANENT_TEETH_UPPER_RIGHT)[number];
 type FdiPermanentTeethUpper = (typeof FDI_PERMANENT_TEETH_UPPER)[number];
 
-const FDI_PERMANENT_TEETH_LOWER_LEFT = [
+export const FDI_PERMANENT_TEETH_LOWER_LEFT = [
   48, 47, 46, 45, 44, 43, 42, 41
 ] as const;
-const FDI_PERMANENT_TEETH_LOWER_RIGHT = [
+export const FDI_PERMANENT_TEETH_LOWER_RIGHT = [
   31, 32, 33, 34, 35, 36, 37, 38
 ] as const;
 const FDI_PERMANENT_TEETH_LOWER = [
@@ -26,29 +26,29 @@ const FDI_PERMANENT_TEETH_LOWER = [
   ...FDI_PERMANENT_TEETH_LOWER_RIGHT
 ] as const;
 
-type FdiPermanentTeethLowerLeft =
+export type FdiPermanentTeethLowerLeft =
   (typeof FDI_PERMANENT_TEETH_LOWER_LEFT)[number];
-type FdiPermanentTeethLowerRight =
+export type FdiPermanentTeethLowerRight =
   (typeof FDI_PERMANENT_TEETH_LOWER_RIGHT)[number];
 type FdiPermanentTeethLower = (typeof FDI_PERMANENT_TEETH_LOWER)[number];
 
-const FDI_PERMANENT_TEETH_LEFT = [
+export const FDI_PERMANENT_TEETH_LEFT = [
   ...FDI_PERMANENT_TEETH_UPPER_LEFT,
   ...FDI_PERMANENT_TEETH_LOWER_LEFT
 ] as const;
-type FdiPermanentTeethLeft = (typeof FDI_PERMANENT_TEETH_LEFT)[number];
+export type FdiPermanentTeethLeft = (typeof FDI_PERMANENT_TEETH_LEFT)[number];
 
-const FDI_PERMANENT_TEETH_RIGHT = [
+export const FDI_PERMANENT_TEETH_RIGHT = [
   ...FDI_PERMANENT_TEETH_UPPER_RIGHT,
   ...FDI_PERMANENT_TEETH_LOWER_RIGHT
 ] as const;
-type FdiPermanentTeethRight = (typeof FDI_PERMANENT_TEETH_RIGHT)[number];
+export type FdiPermanentTeethRight = (typeof FDI_PERMANENT_TEETH_RIGHT)[number];
 
-const FDI_PERMANENT_TEETH = [
+export const FDI_PERMANENT_TEETH = [
   ...FDI_PERMANENT_TEETH_UPPER,
   ...FDI_PERMANENT_TEETH_LOWER
 ] as const;
-type FdiPermanentTeeth = (typeof FDI_PERMANENT_TEETH)[number];
+export type FdiPermanentTeeth = (typeof FDI_PERMANENT_TEETH)[number];
 
 const FDI_BABY_TEETH_UPPER_LEFT = [
   // 58, 57, 56,
