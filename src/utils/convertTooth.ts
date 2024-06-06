@@ -19,7 +19,7 @@ export function convertTooth(
   teeth: UniversalTeeth[],
   from: "universal",
   to: "fdi"
-): UniversalTeeth[];
+): FdiTeeth[];
 
 export function convertTooth(
   teeth: UniversalTeeth[],
