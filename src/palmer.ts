@@ -1,4 +1,4 @@
-const PALMER_PERMANENT_TEETH_UPPER_LEFT = [
+const PALMER_PRIMARY_TEETH_UPPER_LEFT = [
   "UR8",
   "UR7",
   "UR6",
@@ -8,7 +8,7 @@ const PALMER_PERMANENT_TEETH_UPPER_LEFT = [
   "UR2",
   "UR1"
 ] as const;
-const PALMER_PERMANENT_TEETH_UPPER_RIGHT = [
+const PALMER_PRIMARY_TEETH_UPPER_RIGHT = [
   "UL1",
   "UL2",
   "UL3",
@@ -18,18 +18,18 @@ const PALMER_PERMANENT_TEETH_UPPER_RIGHT = [
   "UL7",
   "UL8"
 ] as const;
-const PALMER_PERMANENT_TEETH_UPPER = [
-  ...PALMER_PERMANENT_TEETH_UPPER_LEFT,
-  ...PALMER_PERMANENT_TEETH_UPPER_RIGHT
+const PALMER_PRIMARY_TEETH_UPPER = [
+  ...PALMER_PRIMARY_TEETH_UPPER_LEFT,
+  ...PALMER_PRIMARY_TEETH_UPPER_RIGHT
 ] as const;
 
-type PalmerPermanentTeethUpperLeft =
-  (typeof PALMER_PERMANENT_TEETH_UPPER_LEFT)[number];
-type PalmerPermanentTeethUpperRight =
-  (typeof PALMER_PERMANENT_TEETH_UPPER_RIGHT)[number];
-type PalmerPermanentTeethUpper = (typeof PALMER_PERMANENT_TEETH_UPPER)[number];
+type PalmerPrimaryTeethUpperLeft =
+  (typeof PALMER_PRIMARY_TEETH_UPPER_LEFT)[number];
+type PalmerPrimaryTeethUpperRight =
+  (typeof PALMER_PRIMARY_TEETH_UPPER_RIGHT)[number];
+type PalmerPrimaryTeethUpper = (typeof PALMER_PRIMARY_TEETH_UPPER)[number];
 
-const PALMER_PERMANENT_TEETH_LOWER_LEFT = [
+const PALMER_PRIMARY_TEETH_LOWER_LEFT = [
   "LR8",
   "LR7",
   "LR6",
@@ -39,7 +39,7 @@ const PALMER_PERMANENT_TEETH_LOWER_LEFT = [
   "LR2",
   "LR1"
 ] as const;
-const PALMER_PERMANENT_TEETH_LOWER_RIGHT = [
+const PALMER_PRIMARY_TEETH_LOWER_RIGHT = [
   "LL1",
   "LL2",
   "LL3",
@@ -49,34 +49,34 @@ const PALMER_PERMANENT_TEETH_LOWER_RIGHT = [
   "LL7",
   "LL8"
 ] as const;
-const PALMER_PERMANENT_TEETH_LOWER = [
-  ...PALMER_PERMANENT_TEETH_LOWER_LEFT,
-  ...PALMER_PERMANENT_TEETH_LOWER_RIGHT
+const PALMER_PRIMARY_TEETH_LOWER = [
+  ...PALMER_PRIMARY_TEETH_LOWER_LEFT,
+  ...PALMER_PRIMARY_TEETH_LOWER_RIGHT
 ] as const;
 
-type PalmerPermanentTeethLowerLeft =
-  (typeof PALMER_PERMANENT_TEETH_LOWER_LEFT)[number];
-type PalmerPermanentTeethLowerRight =
-  (typeof PALMER_PERMANENT_TEETH_LOWER_RIGHT)[number];
-type PalmerPermanentTeethLower = (typeof PALMER_PERMANENT_TEETH_LOWER)[number];
+type PalmerPrimaryTeethLowerLeft =
+  (typeof PALMER_PRIMARY_TEETH_LOWER_LEFT)[number];
+type PalmerPrimaryTeethLowerRight =
+  (typeof PALMER_PRIMARY_TEETH_LOWER_RIGHT)[number];
+type PalmerPrimaryTeethLower = (typeof PALMER_PRIMARY_TEETH_LOWER)[number];
 
-const PALMER_PERMANENT_TEETH_LEFT = [
-  ...PALMER_PERMANENT_TEETH_UPPER_LEFT,
-  ...PALMER_PERMANENT_TEETH_LOWER_LEFT
+const PALMER_PRIMARY_TEETH_LEFT = [
+  ...PALMER_PRIMARY_TEETH_UPPER_LEFT,
+  ...PALMER_PRIMARY_TEETH_LOWER_LEFT
 ] as const;
-type PalmerPermanentTeethLeft = (typeof PALMER_PERMANENT_TEETH_LEFT)[number];
+type PalmerPrimaryTeethLeft = (typeof PALMER_PRIMARY_TEETH_LEFT)[number];
 
-const PALMER_PERMANENT_TEETH_RIGHT = [
-  ...PALMER_PERMANENT_TEETH_UPPER_RIGHT,
-  ...PALMER_PERMANENT_TEETH_LOWER_RIGHT
+const PALMER_PRIMARY_TEETH_RIGHT = [
+  ...PALMER_PRIMARY_TEETH_UPPER_RIGHT,
+  ...PALMER_PRIMARY_TEETH_LOWER_RIGHT
 ] as const;
-type PalmerPermanentTeethRight = (typeof PALMER_PERMANENT_TEETH_RIGHT)[number];
+type PalmerPrimaryTeethRight = (typeof PALMER_PRIMARY_TEETH_RIGHT)[number];
 
-const PALMER_PERMANENT_TEETH = [
-  ...PALMER_PERMANENT_TEETH_UPPER,
-  ...PALMER_PERMANENT_TEETH_LOWER
+const PALMER_PRIMARY_TEETH = [
+  ...PALMER_PRIMARY_TEETH_UPPER,
+  ...PALMER_PRIMARY_TEETH_LOWER
 ] as const;
-type PalmerPermanentTeeth = (typeof PALMER_PERMANENT_TEETH)[number];
+type PalmerPrimaryTeeth = (typeof PALMER_PRIMARY_TEETH)[number];
 
 const PALMER_BABY_TEETH_UPPER_LEFT = [
   // "",
@@ -155,7 +155,7 @@ const PALMER_BABY_TEETH = [
 type PalmerBabyTeeth = (typeof PALMER_BABY_TEETH)[number];
 
 export const PALMER_TEETH = [
-  ...PALMER_PERMANENT_TEETH,
+  ...PALMER_PRIMARY_TEETH,
   ...PALMER_BABY_TEETH
 ] as const;
 export type PalmerTeeth = (typeof PALMER_TEETH)[number];

@@ -1,14 +1,14 @@
 import {
-  FDI_PERMANENT_TEETH,
-  FDI_PERMANENT_TEETH_LOWER_LEFT,
-  FDI_PERMANENT_TEETH_LOWER_RIGHT,
-  FDI_PERMANENT_TEETH_UPPER_LEFT,
-  FDI_PERMANENT_TEETH_UPPER_RIGHT,
-  FdiPermanentTeeth,
-  FdiPermanentTeethLowerLeft,
-  FdiPermanentTeethLowerRight,
-  FdiPermanentTeethUpperLeft,
-  FdiPermanentTeethUpperRight,
+  FDI_PRIMARY_TEETH,
+  FDI_PRIMARY_TEETH_LOWER_LEFT,
+  FDI_PRIMARY_TEETH_LOWER_RIGHT,
+  FDI_PRIMARY_TEETH_UPPER_LEFT,
+  FDI_PRIMARY_TEETH_UPPER_RIGHT,
+  FdiPrimaryTeeth,
+  FdiPrimaryTeethLowerLeft,
+  FdiPrimaryTeethLowerRight,
+  FdiPrimaryTeethUpperLeft,
+  FdiPrimaryTeethUpperRight,
   FdiTeeth
 } from "../fdi";
 
@@ -34,42 +34,42 @@ const groupConsecutiveNumbers = (arr: FdiTeeth[]): FdiTeeth[][] => {
   return result;
 };
 
-const convertAdultTooth = (tooth: FdiTeeth): FdiPermanentTeeth => {
-  const adultTooth = tooth as FdiPermanentTeeth;
+const convertAdultTooth = (tooth: FdiTeeth): FdiPrimaryTeeth => {
+  const adultTooth = tooth as FdiPrimaryTeeth;
 
-  if (FDI_PERMANENT_TEETH.includes(adultTooth)) return adultTooth;
-  return (adultTooth - 40) as FdiPermanentTeeth;
+  if (FDI_PRIMARY_TEETH.includes(adultTooth)) return adultTooth;
+  return (adultTooth - 40) as FdiPrimaryTeeth;
 };
 
 const isRightUpperTooth = (
   tooth: FdiTeeth
-): tooth is FdiPermanentTeethUpperRight => {
-  return FDI_PERMANENT_TEETH_UPPER_RIGHT.includes(
-    tooth as FdiPermanentTeethUpperRight
+): tooth is FdiPrimaryTeethUpperRight => {
+  return FDI_PRIMARY_TEETH_UPPER_RIGHT.includes(
+    tooth as FdiPrimaryTeethUpperRight
   );
 };
 
 const isRightLowerTooth = (
   tooth: FdiTeeth
-): tooth is FdiPermanentTeethLowerRight => {
-  return FDI_PERMANENT_TEETH_LOWER_RIGHT.includes(
-    tooth as FdiPermanentTeethLowerRight
+): tooth is FdiPrimaryTeethLowerRight => {
+  return FDI_PRIMARY_TEETH_LOWER_RIGHT.includes(
+    tooth as FdiPrimaryTeethLowerRight
   );
 };
 
 const isLeftUpperTooth = (
   tooth: FdiTeeth
-): tooth is FdiPermanentTeethUpperLeft => {
-  return FDI_PERMANENT_TEETH_UPPER_LEFT.includes(
-    tooth as FdiPermanentTeethUpperLeft
+): tooth is FdiPrimaryTeethUpperLeft => {
+  return FDI_PRIMARY_TEETH_UPPER_LEFT.includes(
+    tooth as FdiPrimaryTeethUpperLeft
   );
 };
 
 const isLeftLowerTooth = (
   tooth: FdiTeeth
-): tooth is FdiPermanentTeethLowerLeft => {
-  return FDI_PERMANENT_TEETH_LOWER_LEFT.includes(
-    tooth as FdiPermanentTeethLowerLeft
+): tooth is FdiPrimaryTeethLowerLeft => {
+  return FDI_PRIMARY_TEETH_LOWER_LEFT.includes(
+    tooth as FdiPrimaryTeethLowerLeft
   );
 };
 
