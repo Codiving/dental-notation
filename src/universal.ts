@@ -75,11 +75,11 @@ const UNIVERSAL_PRIMARY_TEETH_RIGHT = [
 type UniversalPrimaryTeethRight =
   (typeof UNIVERSAL_PRIMARY_TEETH_RIGHT)[number];
 
-const UNIVERSAL_PRIMARY_TEETH = [
+export const UNIVERSAL_PRIMARY_TEETH = [
   ...UNIVERSAL_PRIMARY_TEETH_UPPER,
   ...UNIVERSAL_PRIMARY_TEETH_LOWER
 ] as const;
-type UniversalPrimaryTeeth = (typeof UNIVERSAL_PRIMARY_TEETH)[number];
+export type UniversalPrimaryTeeth = (typeof UNIVERSAL_PRIMARY_TEETH)[number];
 
 const UNIVERSAL_BABY_TEETH_UPPER_LEFT = [
   // "",
@@ -101,7 +101,7 @@ const UNIVERSAL_BABY_TEETH_UPPER_RIGHT = [
   // "",
   // "",
 ] as const;
-const UNIVERSAL_BABY_TEETH_UPPER = [
+export const UNIVERSAL_BABY_TEETH_UPPER = [
   ...UNIVERSAL_BABY_TEETH_UPPER_LEFT,
   ...UNIVERSAL_BABY_TEETH_UPPER_RIGHT
 ] as const;
@@ -110,7 +110,8 @@ type UniversalBabyTeethUpperLeft =
   (typeof UNIVERSAL_BABY_TEETH_UPPER_LEFT)[number];
 type UniversalBabyTeethUpperRight =
   (typeof UNIVERSAL_BABY_TEETH_UPPER_RIGHT)[number];
-type UniversalBabyTeethUpper = (typeof UNIVERSAL_BABY_TEETH_UPPER)[number];
+export type UniversalBabyTeethUpper =
+  (typeof UNIVERSAL_BABY_TEETH_UPPER)[number];
 
 const UNIVERSAL_BABY_TEETH_LOWER_LEFT = [
   // "",
@@ -132,7 +133,7 @@ const UNIVERSAL_BABY_TEETH_LOWER_RIGHT = [
   // "",
   // "",
 ] as const;
-const UNIVERSAL_BABY_TEETH_LOWER = [
+export const UNIVERSAL_BABY_TEETH_LOWER = [
   ...UNIVERSAL_BABY_TEETH_LOWER_LEFT,
   ...UNIVERSAL_BABY_TEETH_LOWER_RIGHT
 ] as const;
@@ -141,7 +142,8 @@ type UniversalBabyTeethLowerLeft =
   (typeof UNIVERSAL_BABY_TEETH_LOWER_LEFT)[number];
 type UniversalBabyTeethLowerRight =
   (typeof UNIVERSAL_BABY_TEETH_LOWER_RIGHT)[number];
-type UniversalBabyTeethLower = (typeof UNIVERSAL_BABY_TEETH_LOWER)[number];
+export type UniversalBabyTeethLower =
+  (typeof UNIVERSAL_BABY_TEETH_LOWER)[number];
 
 const UNIVERSAL_BABY_TEETH_LEFT = [
   ...UNIVERSAL_BABY_TEETH_UPPER_LEFT,
@@ -159,7 +161,19 @@ const UNIVERSAL_BABY_TEETH = [
   ...UNIVERSAL_BABY_TEETH_UPPER,
   ...UNIVERSAL_BABY_TEETH_LOWER
 ] as const;
-type UniversalBabyTeeth = (typeof UNIVERSAL_BABY_TEETH)[number];
+export type UniversalBabyTeeth = (typeof UNIVERSAL_BABY_TEETH)[number];
+
+export const UNIVERSAL_TEETH_LOWER = [
+  ...UNIVERSAL_PRIMARY_TEETH_LOWER,
+  ...UNIVERSAL_BABY_TEETH_LOWER
+];
+export type UniversalTeethLower = (typeof UNIVERSAL_TEETH_LOWER)[number];
+
+export const UNIVERSAL_TEETH_UPPER = [
+  ...UNIVERSAL_PRIMARY_TEETH_UPPER,
+  ...UNIVERSAL_BABY_TEETH_UPPER
+];
+export type UniversalTeethUpper = (typeof UNIVERSAL_TEETH_UPPER)[number];
 
 export const UNIVERSAL_TEETH = [
   ...UNIVERSAL_PRIMARY_TEETH,

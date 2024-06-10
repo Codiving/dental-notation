@@ -4,7 +4,7 @@ export const FDI_PRIMARY_TEETH_UPPER_LEFT = [
 export const FDI_PRIMARY_TEETH_UPPER_RIGHT = [
   21, 22, 23, 24, 25, 26, 27, 28
 ] as const;
-const FDI_PRIMARY_TEETH_UPPER = [
+export const FDI_PRIMARY_TEETH_UPPER = [
   ...FDI_PRIMARY_TEETH_UPPER_LEFT,
   ...FDI_PRIMARY_TEETH_UPPER_RIGHT
 ] as const;
@@ -13,7 +13,7 @@ export type FdiPrimaryTeethUpperLeft =
   (typeof FDI_PRIMARY_TEETH_UPPER_LEFT)[number];
 export type FdiPrimaryTeethUpperRight =
   (typeof FDI_PRIMARY_TEETH_UPPER_RIGHT)[number];
-type FdiPrimaryTeethUpper = (typeof FDI_PRIMARY_TEETH_UPPER)[number];
+export type FdiPrimaryTeethUpper = (typeof FDI_PRIMARY_TEETH_UPPER)[number];
 
 export const FDI_PRIMARY_TEETH_LOWER_LEFT = [
   48, 47, 46, 45, 44, 43, 42, 41
@@ -21,7 +21,7 @@ export const FDI_PRIMARY_TEETH_LOWER_LEFT = [
 export const FDI_PRIMARY_TEETH_LOWER_RIGHT = [
   31, 32, 33, 34, 35, 36, 37, 38
 ] as const;
-const FDI_PRIMARY_TEETH_LOWER = [
+export const FDI_PRIMARY_TEETH_LOWER = [
   ...FDI_PRIMARY_TEETH_LOWER_LEFT,
   ...FDI_PRIMARY_TEETH_LOWER_RIGHT
 ] as const;
@@ -30,7 +30,7 @@ export type FdiPrimaryTeethLowerLeft =
   (typeof FDI_PRIMARY_TEETH_LOWER_LEFT)[number];
 export type FdiPrimaryTeethLowerRight =
   (typeof FDI_PRIMARY_TEETH_LOWER_RIGHT)[number];
-type FdiPrimaryTeethLower = (typeof FDI_PRIMARY_TEETH_LOWER)[number];
+export type FdiPrimaryTeethLower = (typeof FDI_PRIMARY_TEETH_LOWER)[number];
 
 export const FDI_PRIMARY_TEETH_LEFT = [
   ...FDI_PRIMARY_TEETH_UPPER_LEFT,
