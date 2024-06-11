@@ -4,28 +4,7 @@ import {
   UniversalPrimaryTeeth,
   UniversalTeeth
 } from "../universal";
-
-const groupConsecutiveNumbers = (arr: number[]): number[][] => {
-  if (arr.length === 0) return [];
-
-  const sortedArr = [...arr].sort((a, b) => a - b);
-
-  const result: number[][] = [];
-  let currentGroup: number[] = [sortedArr[0]];
-
-  for (let i = 1; i < sortedArr.length; i++) {
-    if (sortedArr[i] === sortedArr[i - 1] + 1) {
-      currentGroup.push(sortedArr[i]);
-    } else {
-      result.push(currentGroup);
-      currentGroup = [sortedArr[i]];
-    }
-  }
-
-  result.push(currentGroup);
-
-  return result;
-};
+import { groupConsecutiveNumbers } from "./common";
 
 const BABY_TO_ADULT: { [key in UniversalBabyTeeth]: UniversalPrimaryTeeth } = {
   A: "4",
