@@ -35,7 +35,7 @@ export const mergeTeethRange = <T extends UniversalTeeth | PalmerTeeth>(
       const startTooth = group[0];
       const endTooth = group[group.length - 1];
       return group.length >= 2
-        ? `${prefix}${startTooth}-${prefix}${endTooth}`
+        ? `${prefix}${startTooth}-${endTooth}`
         : `${prefix}${startTooth}`;
     })
     .join(", ");
