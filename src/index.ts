@@ -4,6 +4,7 @@ import { UniversalTeeth } from "./universal";
 import {
   convertTooth,
   getTeethStringFdi,
+  getTeethStringPalmer,
   getTeethStringUniversal
 } from "./utils";
 
@@ -19,5 +20,6 @@ export {
   UniversalTeeth,
   convertTooth,
   getTeethStringFdi,
+  getTeethStringPalmer,
   getTeethStringUniversal
 };
