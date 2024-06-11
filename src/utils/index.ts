@@ -1,11 +1,4 @@
 import { convertTooth } from "./convertTooth";
-import { getTeethString as getTeethStringFdi } from "./fdi";
-import { getTeethString as getTeethStringPalmer } from "./palmer";
-import { getTeethString as getTeethStringUniversal } from "./universal";
+import { getTeethString } from "./getTeethString";
 
-export {
-  convertTooth,
-  getTeethStringFdi,
-  getTeethStringPalmer,
-  getTeethStringUniversal
-};
+export { convertTooth, getTeethString };

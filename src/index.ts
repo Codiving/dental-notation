@@ -1,12 +1,7 @@
 import { FdiTeeth } from "./fdi";
 import { PalmerTeeth } from "./palmer";
 import { UniversalTeeth } from "./universal";
-import {
-  convertTooth,
-  getTeethStringFdi,
-  getTeethStringPalmer,
-  getTeethStringUniversal
-} from "./utils";
+import { convertTooth, getTeethString } from "./utils";
 
 type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
 
@@ -19,7 +14,5 @@ export {
   ToothNumberingSystem,
   UniversalTeeth,
   convertTooth,
-  getTeethStringFdi,
-  getTeethStringPalmer,
-  getTeethStringUniversal
+  getTeethString
 };
