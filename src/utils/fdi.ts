@@ -1,23 +1,19 @@
 import {
   FDI_PRIMARY_TEETH,
-  FDI_PRIMARY_TEETH_LOWER,
   FDI_PRIMARY_TEETH_LOWER_LEFT,
   FDI_PRIMARY_TEETH_LOWER_RIGHT,
-  FDI_PRIMARY_TEETH_UPPER,
   FDI_PRIMARY_TEETH_UPPER_LEFT,
   FDI_PRIMARY_TEETH_UPPER_RIGHT,
   FdiPrimaryTeeth,
-  FdiPrimaryTeethLower,
   FdiPrimaryTeethLowerLeft,
   FdiPrimaryTeethLowerRight,
-  FdiPrimaryTeethUpper,
   FdiPrimaryTeethUpperLeft,
   FdiPrimaryTeethUpperRight,
   FdiTeeth
 } from "../fdi";
 import { groupConsecutiveNumbers } from "./common";
 
-export const convertAdultTooth = (tooth: FdiTeeth): FdiPrimaryTeeth => {
+const convertAdultTooth = (tooth: FdiTeeth): FdiPrimaryTeeth => {
   const adultTooth = tooth as FdiPrimaryTeeth;
 
   if (FDI_PRIMARY_TEETH.includes(adultTooth)) return adultTooth;
@@ -54,18 +50,6 @@ const isLeftLowerTooth = (
   return FDI_PRIMARY_TEETH_LOWER_LEFT.includes(
     tooth as FdiPrimaryTeethLowerLeft
   );
-};
-
-export const isUpperTooth = (
-  tooth: FdiTeeth
-): tooth is FdiPrimaryTeethUpper => {
-  return FDI_PRIMARY_TEETH_UPPER.includes(tooth as FdiPrimaryTeethUpper);
-};
-
-export const isLowerTooth = (
-  tooth: FdiTeeth
-): tooth is FdiPrimaryTeethLower => {
-  return FDI_PRIMARY_TEETH_LOWER.includes(tooth as FdiPrimaryTeethLower);
 };
 
 const getOriginTooth = (originTeeth: FdiTeeth[], tooth: FdiTeeth): FdiTeeth => {

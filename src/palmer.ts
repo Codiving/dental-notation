@@ -23,12 +23,6 @@ const PALMER_PRIMARY_TEETH_UPPER = [
   ...PALMER_PRIMARY_TEETH_UPPER_RIGHT
 ] as const;
 
-type PalmerPrimaryTeethUpperLeft =
-  (typeof PALMER_PRIMARY_TEETH_UPPER_LEFT)[number];
-type PalmerPrimaryTeethUpperRight =
-  (typeof PALMER_PRIMARY_TEETH_UPPER_RIGHT)[number];
-type PalmerPrimaryTeethUpper = (typeof PALMER_PRIMARY_TEETH_UPPER)[number];
-
 const PALMER_PRIMARY_TEETH_LOWER_LEFT = [
   "8LR",
   "7LR",
@@ -54,34 +48,12 @@ const PALMER_PRIMARY_TEETH_LOWER = [
   ...PALMER_PRIMARY_TEETH_LOWER_RIGHT
 ] as const;
 
-type PalmerPrimaryTeethLowerLeft =
-  (typeof PALMER_PRIMARY_TEETH_LOWER_LEFT)[number];
-type PalmerPrimaryTeethLowerRight =
-  (typeof PALMER_PRIMARY_TEETH_LOWER_RIGHT)[number];
-type PalmerPrimaryTeethLower = (typeof PALMER_PRIMARY_TEETH_LOWER)[number];
-
-const PALMER_PRIMARY_TEETH_LEFT = [
-  ...PALMER_PRIMARY_TEETH_UPPER_LEFT,
-  ...PALMER_PRIMARY_TEETH_LOWER_LEFT
-] as const;
-type PalmerPrimaryTeethLeft = (typeof PALMER_PRIMARY_TEETH_LEFT)[number];
-
-const PALMER_PRIMARY_TEETH_RIGHT = [
-  ...PALMER_PRIMARY_TEETH_UPPER_RIGHT,
-  ...PALMER_PRIMARY_TEETH_LOWER_RIGHT
-] as const;
-type PalmerPrimaryTeethRight = (typeof PALMER_PRIMARY_TEETH_RIGHT)[number];
-
 const PALMER_PRIMARY_TEETH = [
   ...PALMER_PRIMARY_TEETH_UPPER,
   ...PALMER_PRIMARY_TEETH_LOWER
 ] as const;
-export type PalmerPrimaryTeeth = (typeof PALMER_PRIMARY_TEETH)[number];
 
 const PALMER_BABY_TEETH_UPPER_LEFT = [
-  // "",
-  // "",
-  // "",
   "EUR",
   "DUR",
   "CUR",
@@ -94,23 +66,13 @@ const PALMER_BABY_TEETH_UPPER_RIGHT = [
   "CUL",
   "DUL",
   "EUL"
-  // "",
-  // "",
-  // "",
 ] as const;
 const PALMER_BABY_TEETH_UPPER = [
   ...PALMER_BABY_TEETH_UPPER_LEFT,
   ...PALMER_BABY_TEETH_UPPER_RIGHT
 ] as const;
 
-type PalmerBabyTeethUpperLeft = (typeof PALMER_BABY_TEETH_UPPER_LEFT)[number];
-type PalmerBabyTeethUpperRight = (typeof PALMER_BABY_TEETH_UPPER_RIGHT)[number];
-type PalmerBabyTeethUpper = (typeof PALMER_BABY_TEETH_UPPER)[number];
-
 const PALMER_BABY_TEETH_LOWER_LEFT = [
-  // "",
-  // "",
-  // "",
   "ELR",
   "DLR",
   "CLR",
@@ -123,30 +85,11 @@ const PALMER_BABY_TEETH_LOWER_RIGHT = [
   "CLL",
   "DLL",
   "ELL"
-  // "",
-  // "",
-  // "",
 ] as const;
 const PALMER_BABY_TEETH_LOWER = [
   ...PALMER_BABY_TEETH_LOWER_LEFT,
   ...PALMER_BABY_TEETH_LOWER_RIGHT
 ] as const;
-
-type PalmerBabyTeethLowerLeft = (typeof PALMER_BABY_TEETH_LOWER_LEFT)[number];
-type PalmerBabyTeethLowerRight = (typeof PALMER_BABY_TEETH_LOWER_RIGHT)[number];
-type PalmerBabyTeethLower = (typeof PALMER_BABY_TEETH_LOWER)[number];
-
-const PALMER_BABY_TEETH_LEFT = [
-  ...PALMER_BABY_TEETH_UPPER_LEFT,
-  ...PALMER_BABY_TEETH_LOWER_LEFT
-] as const;
-type PalmerBabyTeethLeft = (typeof PALMER_BABY_TEETH_LEFT)[number];
-
-const PALMER_BABY_TEETH_RIGHT = [
-  ...PALMER_BABY_TEETH_UPPER_RIGHT,
-  ...PALMER_BABY_TEETH_LOWER_RIGHT
-] as const;
-type PalmerBabyTeethRight = (typeof PALMER_BABY_TEETH_RIGHT)[number];
 
 const PALMER_BABY_TEETH = [
   ...PALMER_BABY_TEETH_UPPER,
