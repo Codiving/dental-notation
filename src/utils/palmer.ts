@@ -136,6 +136,24 @@ const getUpperLowerTeethNumber = (teethNumber: number[]) => {
   };
 };
 
+const generateTeethGroup = (
+  originTeeth: PalmerTeeth[],
+  teethNumber: number[]
+) => {
+  return groupConsecutiveNumbers(teethNumber).map(group => {
+    return group.map(_tooth => {
+      const tooth = NUMBER_TO_PALMER[_tooth];
+      if (originTeeth.includes(tooth)) {
+        return tooth;
+      } else {
+        const babyTooth = ADULT_TO_BABY[tooth];
+        if (!babyTooth) throw Error("Error");
+        return babyTooth;
+      }
+    });
+  });
+};
+
 const getTeethString = (
   teeth: PalmerTeeth[],
   type: "range" | "individual" = "range"
@@ -145,36 +163,8 @@ const getTeethString = (
   const sortedUpperTeeth = upperTeeth.sort((tooth1, tooth2) => tooth1 - tooth2);
   const sortedLowerTeeth = lowerTeeth.sort((tooth1, tooth2) => tooth2 - tooth1);
 
-  const upperTeethGroup = groupConsecutiveNumbers(sortedUpperTeeth).map(
-    group => {
-      return group.map(_tooth => {
-        const tooth = NUMBER_TO_PALMER[_tooth];
-        if (teeth.includes(tooth)) {
-          return tooth;
-        } else {
-          const babyTooth = ADULT_TO_BABY[tooth];
-
-          if (!babyTooth) throw Error("Error");
-          return babyTooth;
-        }
-      });
-    }
-  );
-  const lowerTeethGroup = groupConsecutiveNumbers(sortedLowerTeeth).map(
-    group => {
-      return group.map(_tooth => {
-        const tooth = NUMBER_TO_PALMER[_tooth];
-        if (teeth.includes(tooth)) {
-          return tooth;
-        } else {
-          const babyTooth = ADULT_TO_BABY[tooth];
-
-          if (!babyTooth) throw Error("Error");
-          return babyTooth;
-        }
-      });
-    }
-  );
+  const upperTeethGroup = generateTeethGroup(teeth, sortedUpperTeeth);
+  const lowerTeethGroup = generateTeethGroup(teeth, sortedLowerTeeth);
 
   if (type === "range") {
     return mergeTeethRange([...upperTeethGroup, ...lowerTeethGroup]);
