@@ -1,5 +1,9 @@
 import { PalmerBabyTeeth, PalmerTeeth } from "../palmer";
-import { groupConsecutiveNumbers } from "./common";
+import {
+  groupConsecutiveNumbers,
+  mergeTeethIndividual,
+  mergeTeethRange
+} from "./common";
 
 const PALMER_TO_NUMBER: { [key in PalmerTeeth]: number } = {
   "8UR": 0,
@@ -148,7 +152,10 @@ const getTeethString = (
         if (teeth.includes(tooth)) {
           return tooth;
         } else {
-          return ADULT_TO_BABY[tooth];
+          const babyTooth = ADULT_TO_BABY[tooth];
+
+          if (!babyTooth) throw Error("Error");
+          return babyTooth;
         }
       });
     }
@@ -160,27 +167,19 @@ const getTeethString = (
         if (teeth.includes(tooth)) {
           return tooth;
         } else {
-          return ADULT_TO_BABY[tooth];
+          const babyTooth = ADULT_TO_BABY[tooth];
+
+          if (!babyTooth) throw Error("Error");
+          return babyTooth;
         }
       });
     }
   );
 
   if (type === "range") {
-    return [...upperTeethGroup, ...lowerTeethGroup]
-      .map(group => {
-        const startTooth = group[0];
-        const endTooth = group[group.length - 1];
-        return group.length >= 2
-          ? `${startTooth}-${endTooth}`
-          : `${startTooth}`;
-      })
-      .join(", ");
+    return mergeTeethRange([...upperTeethGroup, ...lowerTeethGroup]);
   } else if (type === "individual") {
-    return [...upperTeethGroup, ...lowerTeethGroup]
-      .flat()
-      .map(tooth => `${tooth}`)
-      .join(", ");
+    return mergeTeethIndividual([...upperTeethGroup, ...lowerTeethGroup]);
   }
 };
 export { getTeethString };

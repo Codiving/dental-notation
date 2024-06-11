@@ -4,7 +4,11 @@ import {
   UniversalPrimaryTeeth,
   UniversalTeeth
 } from "../universal";
-import { groupConsecutiveNumbers } from "./common";
+import {
+  groupConsecutiveNumbers,
+  mergeTeethIndividual,
+  mergeTeethRange
+} from "./common";
 
 const BABY_TO_ADULT: { [key in UniversalBabyTeeth]: UniversalPrimaryTeeth } = {
   A: "4",
@@ -111,20 +115,9 @@ const getTeethString = (
   });
 
   if (type === "range") {
-    return [...originUpperTeeth, ...originLowerTeeth]
-      .map(group => {
-        const startTooth = group[0];
-        const endTooth = group[group.length - 1];
-        return group.length >= 2
-          ? `${prefix}${startTooth}-${prefix}${endTooth}`
-          : `${prefix}${startTooth}`;
-      })
-      .join(", ");
+    return mergeTeethRange([...originUpperTeeth, ...originLowerTeeth]);
   } else if (type === "individual") {
-    return [...originUpperTeeth, ...originLowerTeeth]
-      .flat()
-      .map(tooth => `${prefix}${tooth}`)
-      .join(", ");
+    return mergeTeethIndividual([...originUpperTeeth, ...originLowerTeeth]);
   }
 };
 

@@ -1,4 +1,6 @@
 import { FdiTeeth } from "../fdi";
+import { PalmerTeeth } from "../palmer";
+import { UniversalTeeth } from "../universal";
 
 export const groupConsecutiveNumbers = <T extends number | FdiTeeth>(
   arr: T[]
@@ -22,4 +24,29 @@ export const groupConsecutiveNumbers = <T extends number | FdiTeeth>(
   result.push(currentGroup);
 
   return result;
+};
+
+export const mergeTeethRange = <T extends UniversalTeeth | PalmerTeeth>(
+  teeth: T[][],
+  prefix: string = ""
+) => {
+  return teeth
+    .map(group => {
+      const startTooth = group[0];
+      const endTooth = group[group.length - 1];
+      return group.length >= 2
+        ? `${prefix}${startTooth}-${prefix}${endTooth}`
+        : `${prefix}${startTooth}`;
+    })
+    .join(", ");
+};
+
+export const mergeTeethIndividual = <T extends UniversalTeeth | PalmerTeeth>(
+  teeth: T[][],
+  prefix: string = ""
+) => {
+  return teeth
+    .flat()
+    .map(tooth => `${prefix}${tooth}`)
+    .join(", ");
 };
