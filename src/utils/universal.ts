@@ -113,7 +113,7 @@ const getTeethString = (
 
   if (type === "range") {
     return mergeTeethRange([...originUpperTeeth, ...originLowerTeeth], prefix);
-  } else if (type === "individual") {
+  } else {
     return mergeTeethIndividual(
       [...originUpperTeeth, ...originLowerTeeth],
       prefix

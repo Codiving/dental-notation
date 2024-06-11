@@ -158,7 +158,7 @@ const getTeethString = (
     );
 
     return [uLeftTeeth, uRightTeeth, lLeftTeeth, lRightTeeth].join(", ");
-  } else if (type === "individual") {
+  } else {
     const uLeftTeeth = getFormattingIndividual(
       teeth,
       upperLeftTeeth,
