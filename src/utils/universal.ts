@@ -74,6 +74,22 @@ const convertAdultTooth = (tooth: UniversalTeeth): UniversalPrimaryTeeth => {
   return result;
 };
 
+const generateTeethGroup = (
+  originTeeth: UniversalTeeth[],
+  teethNumber: number[][]
+) => {
+  return teethNumber.map(group => {
+    return group.map(_tooth => {
+      const tooth = String(_tooth) as UniversalPrimaryTeeth;
+      if (originTeeth.includes(tooth)) return tooth as UniversalTeeth;
+      const result = ADULT_TO_BABY[tooth];
+
+      if (!result) throw Error("Error");
+      return result as UniversalTeeth;
+    });
+  });
+};
+
 const getTeethString = (
   teeth: UniversalTeeth[],
   type: "range" | "individual" = "range",
@@ -92,32 +108,16 @@ const getTeethString = (
     .map(teethGroup => teethGroup.sort(sortUniversal))
     .reverse();
 
-  const originUpperTeeth: UniversalTeeth[][] = upperTeethGroup.map(group => {
-    return group.map(_tooth => {
-      const tooth = String(_tooth) as UniversalPrimaryTeeth;
-      if (teeth.includes(tooth)) return tooth as UniversalTeeth;
-      const result = ADULT_TO_BABY[tooth];
-
-      if (!result) throw Error("Error");
-      return result as UniversalTeeth;
-    });
-  });
-
-  const originLowerTeeth: UniversalTeeth[][] = lowerTeethGroup.map(group => {
-    return group.map(_tooth => {
-      const tooth = String(_tooth) as UniversalPrimaryTeeth;
-      if (teeth.includes(tooth)) return tooth as UniversalTeeth;
-      const result = ADULT_TO_BABY[tooth];
-
-      if (!result) throw Error("Error");
-      return result as UniversalTeeth;
-    });
-  });
+  const originUpperTeeth = generateTeethGroup(teeth, upperTeethGroup);
+  const originLowerTeeth = generateTeethGroup(teeth, lowerTeethGroup);
 
   if (type === "range") {
-    return mergeTeethRange([...originUpperTeeth, ...originLowerTeeth]);
+    return mergeTeethRange([...originUpperTeeth, ...originLowerTeeth], prefix);
   } else if (type === "individual") {
-    return mergeTeethIndividual([...originUpperTeeth, ...originLowerTeeth]);
+    return mergeTeethIndividual(
+      [...originUpperTeeth, ...originLowerTeeth],
+      prefix
+    );
   }
 };
 
