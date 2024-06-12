@@ -7,19 +7,19 @@ import { getTeethString as getTeethStringUniversal } from "./universal";
 
 export function getTeethString(
   teeth: FdiTeeth[],
-  type: "range" | "individual",
+  type?: "range" | "individual",
   prefix?: string
 ): string;
 
 export function getTeethString(
   teeth: UniversalTeeth[],
-  type: "range" | "individual",
+  type?: "range" | "individual",
   prefix?: string
 ): string;
 
 export function getTeethString(
   teeth: PalmerTeeth[],
-  type: "range" | "individual"
+  type?: "range" | "individual"
 ): string;
 
 export function getTeethString(
