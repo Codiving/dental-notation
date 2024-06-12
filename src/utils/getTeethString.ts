@@ -1,6 +1,7 @@
-import { FDI_TEETH, FdiTeeth } from "../fdi";
+import { FdiTeeth } from "../fdi";
 import { PalmerTeeth } from "../palmer";
-import { UNIVERSAL_TEETH, UniversalTeeth } from "../universal";
+import { UniversalTeeth } from "../universal";
+import { isFdiTeeth, isUniversalTeeth } from "./common";
 import { getTeethString as getTeethStringFdi } from "./fdi";
 import { getTeethString as getTeethStringPalmer } from "./palmer";
 import { getTeethString as getTeethStringUniversal } from "./universal";
@@ -32,11 +33,11 @@ export function getTeethString(
   const tooth = teeth[0];
 
   // fdi
-  if (FDI_TEETH.includes(tooth as FdiTeeth)) {
+  if (isFdiTeeth(tooth)) {
     return getTeethStringFdi(teeth as FdiTeeth[], type, prefix);
   }
   // universal
-  else if (UNIVERSAL_TEETH.includes(tooth as UniversalTeeth)) {
+  else if (isUniversalTeeth(tooth)) {
     return getTeethStringUniversal(teeth as UniversalTeeth[], type, prefix);
   }
   // palmer
