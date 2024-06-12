@@ -1,16 +1,24 @@
 {
   "name": "dental-notation",
   "version": "0.0.1",
-  "description": "",
+  "description": "This package facilitates easy manipulation of commonly used dental notation methods in dentistry, covering a total of three dental notations: FDI, Universal, and Palmer.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "url": "https://github.com/Codiving/dental-notation"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "ts-node src/index.ts"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Codiving",
+  "keywords": [
+    "dental",
+    "tooth",
+    "teeth"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.14.0",
     "ts-node": "^10.9.2",
