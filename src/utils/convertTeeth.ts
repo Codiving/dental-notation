@@ -4,28 +4,28 @@ import { PALMER_TEETH, PalmerTeeth } from "../palmer";
 import { UNIVERSAL_TEETH, UniversalTeeth } from "../universal";
 import { isFdiTeeth, isUniversalTeeth } from "./common";
 
-export function convertTooth(
+export function convertTeeth(
   teeth: FdiTeeth[],
   to: "universal"
 ): UniversalTeeth[];
 
-export function convertTooth(teeth: FdiTeeth[], to: "palmer"): PalmerTeeth[];
+export function convertTeeth(teeth: FdiTeeth[], to: "palmer"): PalmerTeeth[];
 
-export function convertTooth(teeth: UniversalTeeth[], to: "fdi"): FdiTeeth[];
+export function convertTeeth(teeth: UniversalTeeth[], to: "fdi"): FdiTeeth[];
 
-export function convertTooth(
+export function convertTeeth(
   teeth: UniversalTeeth[],
   to: "palmer"
 ): PalmerTeeth[];
 
-export function convertTooth(teeth: PalmerTeeth[], to: "fdi"): FdiTeeth[];
+export function convertTeeth(teeth: PalmerTeeth[], to: "fdi"): FdiTeeth[];
 
-export function convertTooth(
+export function convertTeeth(
   teeth: PalmerTeeth[],
   to: "universal"
 ): UniversalTeeth[];
 
-export function convertTooth(
+export function convertTeeth(
   teeth: FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[],
   to: NotationType
 ): FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[] {

@@ -1,4 +1,4 @@
-import { convertTooth } from "./convertTooth";
+import { convertTeeth } from "./convertTeeth";
 import { getTeethString } from "./getTeethString";
 
-export { convertTooth, getTeethString };
+export { convertTeeth, getTeethString };
