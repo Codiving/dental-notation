@@ -1,4 +1,4 @@
-import { Teeth, ToothNumberingSystem } from "..";
+import { NotationType, Teeth } from "..";
 import { FDI_TEETH, FdiTeeth } from "../fdi";
 import { PALMER_TEETH, PalmerTeeth } from "../palmer";
 import { UNIVERSAL_TEETH, UniversalTeeth } from "../universal";
@@ -41,8 +41,8 @@ export function convertTooth(
 
 export function convertTooth(
   teeth: FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[],
-  from: ToothNumberingSystem,
-  to: ToothNumberingSystem
+  from: NotationType,
+  to: NotationType
 ): FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[] {
   if (!teeth.length) return [];
 

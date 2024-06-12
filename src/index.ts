@@ -5,14 +5,8 @@ import { convertTooth, getTeethString } from "./utils";
 
 type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
 
-type ToothNumberingSystem = "fdi" | "universal" | "palmer";
+type NotationType = "fdi" | "universal" | "palmer";
 
 export { convertTooth, getTeethString };
 
-export type {
-  FdiTeeth,
-  PalmerTeeth,
-  Teeth,
-  ToothNumberingSystem,
-  UniversalTeeth
-};
+export type { FdiTeeth, NotationType, PalmerTeeth, Teeth, UniversalTeeth };
