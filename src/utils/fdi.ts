@@ -141,7 +141,9 @@ const getTeethString = (
       prefix
     );
 
-    return [uLeftTeeth, uRightTeeth, lLeftTeeth, lRightTeeth].join(", ");
+    return [uLeftTeeth, uRightTeeth, lLeftTeeth, lRightTeeth]
+      .filter(el => el.length)
+      .join(", ");
   } else {
     const uLeftTeeth = getFormattingIndividual(
       teeth,
