@@ -7,12 +7,12 @@ type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
 
 type ToothNumberingSystem = "fdi" | "universal" | "palmer";
 
-export {
+export { convertTooth, getTeethString };
+
+export type {
   FdiTeeth,
   PalmerTeeth,
   Teeth,
   ToothNumberingSystem,
-  UniversalTeeth,
-  convertTooth,
-  getTeethString
+  UniversalTeeth
 };
