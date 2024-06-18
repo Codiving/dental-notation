@@ -10,7 +10,9 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "test": "jest",
+    "coverage": "npx jest"
   },
   "author": "Codiving",
   "keywords": [
@@ -20,7 +22,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.14.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.4",
     "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5"
