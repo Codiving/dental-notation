@@ -74,7 +74,7 @@ const convertAdultTooth = (tooth: UniversalTeeth): UniversalPrimaryTeeth => {
   return result;
 };
 
-const generateTeethGroup = (
+export const generateTeethGroup = (
   originTeeth: UniversalTeeth[],
   teethNumber: number[][]
 ) => {

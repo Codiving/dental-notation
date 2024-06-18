@@ -52,7 +52,10 @@ const isLeftLowerTooth = (
   );
 };
 
-const getOriginTooth = (originTeeth: FdiTeeth[], tooth: FdiTeeth): FdiTeeth => {
+export const getOriginTooth = (
+  originTeeth: FdiTeeth[],
+  tooth: FdiTeeth
+): FdiTeeth => {
   if (originTeeth.includes(tooth)) return tooth;
 
   if (tooth > 50) return (tooth - 40) as FdiTeeth;
