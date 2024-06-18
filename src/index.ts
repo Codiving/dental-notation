@@ -31,7 +31,38 @@ import {
   FdiTeeth
 } from "./fdi";
 import { PalmerTeeth } from "./palmer";
-import { UniversalTeeth } from "./universal";
+import {
+  UNIVERSAL_BABY_TEETH,
+  UNIVERSAL_BABY_TEETH_LOWER,
+  UNIVERSAL_BABY_TEETH_LOWER_LEFT,
+  UNIVERSAL_BABY_TEETH_LOWER_RIGHT,
+  UNIVERSAL_BABY_TEETH_UPPER,
+  UNIVERSAL_BABY_TEETH_UPPER_LEFT,
+  UNIVERSAL_BABY_TEETH_UPPER_RIGHT,
+  UNIVERSAL_PRIMARY_TEETH,
+  UNIVERSAL_PRIMARY_TEETH_LOWER,
+  UNIVERSAL_PRIMARY_TEETH_LOWER_LEFT,
+  UNIVERSAL_PRIMARY_TEETH_LOWER_RIGHT,
+  UNIVERSAL_PRIMARY_TEETH_UPPER,
+  UNIVERSAL_PRIMARY_TEETH_UPPER_LEFT,
+  UNIVERSAL_PRIMARY_TEETH_UPPER_RIGHT,
+  UNIVERSAL_TEETH,
+  UniversalBabyTeeth,
+  UniversalBabyTeethLower,
+  UniversalBabyTeethLowerLeft,
+  UniversalBabyTeethLowerRight,
+  UniversalBabyTeethUpper,
+  UniversalBabyTeethUpperLeft,
+  UniversalBabyTeethUpperRight,
+  UniversalPrimaryTeeth,
+  UniversalPrimaryTeethLower,
+  UniversalPrimaryTeethLowerLeft,
+  UniversalPrimaryTeethLowerRight,
+  UniversalPrimaryTeethUpper,
+  UniversalPrimaryTeethUpperLeft,
+  UniversalPrimaryTeethUpperRight,
+  UniversalTeeth
+} from "./universal";
 import { convertTeeth, getTeethString } from "./utils";
 
 type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
@@ -54,6 +85,21 @@ export {
   FDI_PRIMARY_TEETH_UPPER_LEFT,
   FDI_PRIMARY_TEETH_UPPER_RIGHT,
   FDI_TEETH,
+  UNIVERSAL_BABY_TEETH,
+  UNIVERSAL_BABY_TEETH_LOWER,
+  UNIVERSAL_BABY_TEETH_LOWER_LEFT,
+  UNIVERSAL_BABY_TEETH_LOWER_RIGHT,
+  UNIVERSAL_BABY_TEETH_UPPER,
+  UNIVERSAL_BABY_TEETH_UPPER_LEFT,
+  UNIVERSAL_BABY_TEETH_UPPER_RIGHT,
+  UNIVERSAL_PRIMARY_TEETH,
+  UNIVERSAL_PRIMARY_TEETH_LOWER,
+  UNIVERSAL_PRIMARY_TEETH_LOWER_LEFT,
+  UNIVERSAL_PRIMARY_TEETH_LOWER_RIGHT,
+  UNIVERSAL_PRIMARY_TEETH_UPPER,
+  UNIVERSAL_PRIMARY_TEETH_UPPER_LEFT,
+  UNIVERSAL_PRIMARY_TEETH_UPPER_RIGHT,
+  UNIVERSAL_TEETH,
   convertTeeth,
   getTeethString
 };
@@ -77,5 +123,19 @@ export type {
   NotationType,
   PalmerTeeth,
   Teeth,
+  UniversalBabyTeeth,
+  UniversalBabyTeethLower,
+  UniversalBabyTeethLowerLeft,
+  UniversalBabyTeethLowerRight,
+  UniversalBabyTeethUpper,
+  UniversalBabyTeethUpperLeft,
+  UniversalBabyTeethUpperRight,
+  UniversalPrimaryTeeth,
+  UniversalPrimaryTeethLower,
+  UniversalPrimaryTeethLowerLeft,
+  UniversalPrimaryTeethLowerRight,
+  UniversalPrimaryTeethUpper,
+  UniversalPrimaryTeethUpperLeft,
+  UniversalPrimaryTeethUpperRight,
   UniversalTeeth
 };
