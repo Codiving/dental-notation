@@ -32,6 +32,17 @@ export type FdiPrimaryTeethLowerRight =
   (typeof FDI_PRIMARY_TEETH_LOWER_RIGHT)[number];
 export type FdiPrimaryTeethLower = (typeof FDI_PRIMARY_TEETH_LOWER)[number];
 
+export const FDI_PRIMARY_TEETH_LEFT = [
+  ...FDI_PRIMARY_TEETH_UPPER_LEFT,
+  ...FDI_PRIMARY_TEETH_LOWER_LEFT
+] as const;
+export const FDI_PRIMARY_TEETH_RIGHT = [
+  ...FDI_PRIMARY_TEETH_UPPER_RIGHT,
+  ...FDI_PRIMARY_TEETH_LOWER_RIGHT
+] as const;
+export type FdiPrimaryTeethLeft = (typeof FDI_PRIMARY_TEETH_LEFT)[number];
+export type FdiPrimaryTeethRight = (typeof FDI_PRIMARY_TEETH_RIGHT)[number];
+
 export const FDI_PRIMARY_TEETH = [
   ...FDI_PRIMARY_TEETH_UPPER,
   ...FDI_PRIMARY_TEETH_LOWER
@@ -49,6 +60,36 @@ export type FdiBabyTeethUpperRight =
   (typeof FDI_BABY_TEETH_UPPER_RIGHT)[number];
 export type FdiBabyTeethUpper = (typeof FDI_BABY_TEETH_UPPER)[number];
 
+export const FDI_BABY_TEETH_UPPER_LEFT_NON_EXIST = [58, 57, 56] as const;
+export const FDI_BABY_TEETH_UPPER_LEFT_TMP = [
+  ...FDI_BABY_TEETH_UPPER_LEFT_NON_EXIST,
+  ...FDI_BABY_TEETH_UPPER_LEFT
+] as const;
+export const FDI_BABY_TEETH_UPPER_RIGHT_NON_EXIST = [66, 67, 68] as const;
+export const FDI_BABY_TEETH_UPPER_RIGHT_TMP = [
+  ...FDI_BABY_TEETH_UPPER_RIGHT,
+  ...FDI_BABY_TEETH_UPPER_RIGHT_NON_EXIST
+] as const;
+export const FDI_BABY_TEETH_UPPER_NON_EXIST = [
+  ...FDI_BABY_TEETH_UPPER_LEFT_NON_EXIST,
+  ...FDI_BABY_TEETH_UPPER_RIGHT_NON_EXIST
+] as const;
+export const FDI_BABY_TEETH_UPPER_TMP = [
+  ...FDI_BABY_TEETH_UPPER_LEFT_TMP,
+  ...FDI_BABY_TEETH_UPPER_RIGHT_TMP
+] as const;
+export type FdiBabyTeethUpperLeftNonExist =
+  (typeof FDI_BABY_TEETH_UPPER_LEFT_NON_EXIST)[number];
+export type FdiBabyTeethUpperLeftTmp =
+  (typeof FDI_BABY_TEETH_UPPER_LEFT_TMP)[number];
+export type FdiBabyTeethUpperRightNonExist =
+  (typeof FDI_BABY_TEETH_UPPER_RIGHT_NON_EXIST)[number];
+export type FdiBabyTeethUpperRightTmp =
+  (typeof FDI_BABY_TEETH_UPPER_RIGHT_TMP)[number];
+export type FdiBabyTeethUpperNonExist =
+  (typeof FDI_BABY_TEETH_UPPER_NON_EXIST)[number];
+export type FdiBabyTeethUpperTmp = (typeof FDI_BABY_TEETH_UPPER_TMP)[number];
+
 export const FDI_BABY_TEETH_LOWER_LEFT = [85, 84, 83, 82, 81] as const;
 export const FDI_BABY_TEETH_LOWER_RIGHT = [71, 72, 73, 74, 75] as const;
 export const FDI_BABY_TEETH_LOWER = [
@@ -60,6 +101,47 @@ export type FdiBabyTeethLowerRight =
   (typeof FDI_BABY_TEETH_LOWER_RIGHT)[number];
 export type FdiBabyTeethLower = (typeof FDI_BABY_TEETH_LOWER)[number];
 
+export const FDI_BABY_TEETH_LOWER_LEFT_NON_EXIST = [88, 87, 86] as const;
+export const FDI_BABY_TEETH_LOWER_LEFT_TMP = [
+  ...FDI_BABY_TEETH_LOWER_LEFT_NON_EXIST,
+  ...FDI_BABY_TEETH_LOWER_LEFT
+] as const;
+export const FDI_BABY_TEETH_LOWER_RIGHT_NON_EXIST = [76, 77, 78] as const;
+export const FDI_BABY_TEETH_LOWER_RIGHT_TMP = [
+  ...FDI_BABY_TEETH_LOWER_RIGHT,
+  ...FDI_BABY_TEETH_LOWER_RIGHT_NON_EXIST
+] as const;
+export const FDI_BABY_TEETH_LOWER_NON_EXIST = [
+  ...FDI_BABY_TEETH_LOWER_LEFT_NON_EXIST,
+  ...FDI_BABY_TEETH_LOWER_RIGHT_NON_EXIST
+] as const;
+export const FDI_BABY_TEETH_LOWER_TMP = [
+  ...FDI_BABY_TEETH_LOWER_LEFT_TMP,
+  ...FDI_BABY_TEETH_LOWER_RIGHT_TMP
+] as const;
+export type FdiBabyTeethLowerLeftTmp =
+  (typeof FDI_BABY_TEETH_LOWER_LEFT_TMP)[number];
+export type FdiBabyTeethLowerRightTmp =
+  (typeof FDI_BABY_TEETH_LOWER_RIGHT_TMP)[number];
+export type FdiBabyTeethLowerTmp = (typeof FDI_BABY_TEETH_LOWER_TMP)[number];
+export type FdiBabyTeethLowerLeftNonExist =
+  (typeof FDI_BABY_TEETH_LOWER_LEFT_NON_EXIST)[number];
+export type FdiBabyTeethLowerRightNonExist =
+  (typeof FDI_BABY_TEETH_LOWER_RIGHT_NON_EXIST)[number];
+export type FdiBabyTeethLowerNonExist =
+  (typeof FDI_BABY_TEETH_LOWER_NON_EXIST)[number];
+
+export const FDI_BABY_TEETH_LEFT = [
+  ...FDI_BABY_TEETH_UPPER_LEFT,
+  ...FDI_BABY_TEETH_LOWER_LEFT
+] as const;
+export const FDI_BABY_TEETH_RIGHT = [
+  ...FDI_BABY_TEETH_UPPER_RIGHT,
+  ...FDI_BABY_TEETH_LOWER_RIGHT
+] as const;
+export type FdiBabyTeethLeft = (typeof FDI_BABY_TEETH_LEFT)[number];
+export type FdiBabyTeethRight = (typeof FDI_BABY_TEETH_RIGHT)[number];
+
 export const FDI_BABY_TEETH = [
   ...FDI_BABY_TEETH_UPPER,
   ...FDI_BABY_TEETH_LOWER
@@ -68,3 +150,21 @@ export type FdiBabyTeeth = (typeof FDI_BABY_TEETH)[number];
 
 export const FDI_TEETH = [...FDI_PRIMARY_TEETH, ...FDI_BABY_TEETH] as const;
 export type FdiTeeth = (typeof FDI_TEETH)[number];
+
+export const FDI_BABY_TEETH_TMP = [
+  ...FDI_BABY_TEETH_UPPER_TMP,
+  ...FDI_BABY_TEETH_LOWER_TMP
+] as const;
+export type FdiBabyTeethTmp = (typeof FDI_BABY_TEETH_TMP)[number];
+
+export const FDI_TEETH_NON_EXIST = [
+  ...FDI_BABY_TEETH_UPPER_NON_EXIST,
+  ...FDI_BABY_TEETH_LOWER_NON_EXIST
+] as const;
+export type FdiTeethNonExist = (typeof FDI_TEETH_NON_EXIST)[number];
+
+export const FDI_TEETH_TMP = [
+  ...FDI_PRIMARY_TEETH,
+  ...FDI_BABY_TEETH_TMP
+] as const;
+export type FdiTeethTmp = (typeof FDI_TEETH_TMP)[number];
