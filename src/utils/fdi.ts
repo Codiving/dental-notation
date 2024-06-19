@@ -68,8 +68,8 @@ const getFormattingGroup = (
   prefix: string
 ): string => {
   const reverseTeeth = isLeft
-    ? teeth.reverse().map(teeth => teeth.reverse())
-    : teeth;
+    ? teeth
+    : teeth.reverse().map(teeth => teeth.reverse());
 
   const result = reverseTeeth.reduce((teethString, teeth) => {
     const _startTooth = teeth[0];
@@ -102,8 +102,8 @@ const getFormattingIndividual = (
   prefix: string
 ) => {
   const reverseTeeth = isLeft
-    ? teeth.reverse().map(teeth => teeth.reverse())
-    : teeth;
+    ? teeth
+    : teeth.reverse().map(teeth => teeth.reverse());
 
   return reverseTeeth
     .flat()
@@ -143,7 +143,7 @@ const getTeethString = (
       prefix
     );
 
-    return [uLeftTeeth, uRightTeeth, lLeftTeeth, lRightTeeth]
+    return [uRightTeeth, uLeftTeeth, lRightTeeth, lLeftTeeth]
       .filter(el => el.length)
       .join(", ");
   } else {
@@ -172,7 +172,7 @@ const getTeethString = (
       prefix
     );
 
-    return [uLeftTeeth, uRightTeeth, lLeftTeeth, lRightTeeth].flat().join(", ");
+    return [uRightTeeth, uLeftTeeth, lRightTeeth, lLeftTeeth].flat().join(", ");
   }
 };
 
