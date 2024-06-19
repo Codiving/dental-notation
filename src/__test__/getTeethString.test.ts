@@ -1,8 +1,8 @@
 import { FdiTeeth } from "../fdi";
 import { PalmerTeeth } from "../palmer";
 import { UniversalTeeth } from "../universal";
-import { getTeethString } from "../utils";
 import { getTeethString as getTeethStringFdi } from "../utils/fdi";
+import { getTeethString } from "../utils/getTeethString";
 import { getTeethString as getTeethStringPalmer } from "../utils/palmer";
 import { getTeethString as getTeethStringUniversal } from "../utils/universal";
 

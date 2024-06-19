@@ -94,7 +94,8 @@ import {
   UniversalPrimaryTeethUpperRight,
   UniversalTeeth
 } from "./universal";
-import { convertTeeth, getTeethString } from "./utils";
+import { convertTeeth } from "./utils/convertTeeth";
+import { getTeethString } from "./utils/getTeethString";
 
 type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
 

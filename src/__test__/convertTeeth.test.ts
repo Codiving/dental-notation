@@ -1,7 +1,7 @@
 import { FdiTeeth } from "../fdi";
 import { PalmerTeeth } from "../palmer";
 import { UniversalTeeth } from "../universal";
-import { convertTeeth } from "../utils";
+import { convertTeeth } from "../utils/convertTeeth";
 
 const fdi1: FdiTeeth[] = [
   18, 17, 16, 15, 53, 12, 11, 61, 62, 63, 65, 26, 48, 47, 46, 45, 43, 42, 41,
