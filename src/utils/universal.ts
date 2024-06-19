@@ -1,8 +1,10 @@
 import {
   UNIVERSAL_PRIMARY_TEETH,
+  UNIVERSAL_TEETH,
   UniversalBabyTeeth,
   UniversalPrimaryTeeth,
-  UniversalTeeth
+  UniversalTeeth,
+  UniversalTeethTmp
 } from "../universal";
 import {
   groupConsecutiveNumbers,
@@ -74,7 +76,7 @@ const convertAdultTooth = (tooth: UniversalTeeth): UniversalPrimaryTeeth => {
   return result;
 };
 
-export const generateTeethGroup = (
+const generateTeethGroup = (
   originTeeth: UniversalTeeth[],
   teethNumber: number[][]
 ) => {
@@ -121,4 +123,8 @@ const getTeethString = (
   }
 };
 
-export { getTeethString };
+const isExistTooth = (tooth: UniversalTeethTmp): tooth is UniversalTeeth => {
+  return UNIVERSAL_TEETH.includes(tooth as UniversalTeeth);
+};
+
+export { generateTeethGroup, getTeethString, isExistTooth };

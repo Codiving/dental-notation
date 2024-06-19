@@ -4,12 +4,14 @@ import {
   FDI_PRIMARY_TEETH_LOWER_RIGHT,
   FDI_PRIMARY_TEETH_UPPER_LEFT,
   FDI_PRIMARY_TEETH_UPPER_RIGHT,
+  FDI_TEETH,
   FdiPrimaryTeeth,
   FdiPrimaryTeethLowerLeft,
   FdiPrimaryTeethLowerRight,
   FdiPrimaryTeethUpperLeft,
   FdiPrimaryTeethUpperRight,
-  FdiTeeth
+  FdiTeeth,
+  FdiTeethTmp
 } from "../fdi";
 import { groupConsecutiveNumbers } from "./common";
 
@@ -52,10 +54,7 @@ const isLeftLowerTooth = (
   );
 };
 
-export const getOriginTooth = (
-  originTeeth: FdiTeeth[],
-  tooth: FdiTeeth
-): FdiTeeth => {
+const getOriginTooth = (originTeeth: FdiTeeth[], tooth: FdiTeeth): FdiTeeth => {
   if (originTeeth.includes(tooth)) return tooth;
 
   if (tooth > 50) return (tooth - 40) as FdiTeeth;
@@ -177,4 +176,8 @@ const getTeethString = (
   }
 };
 
-export { getTeethString };
+const isExistTooth = (tooth: FdiTeethTmp): tooth is FdiTeeth => {
+  return FDI_TEETH.includes(tooth as FdiTeeth);
+};
+
+export { getOriginTooth, getTeethString, isExistTooth };

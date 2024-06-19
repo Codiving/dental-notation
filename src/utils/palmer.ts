@@ -1,4 +1,9 @@
-import { PalmerBabyTeeth, PalmerTeeth } from "../palmer";
+import {
+  PALMER_TEETH,
+  PalmerBabyTeeth,
+  PalmerTeeth,
+  PalmerTeethTmp
+} from "../palmer";
 import {
   groupConsecutiveNumbers,
   mergeTeethIndividual,
@@ -172,4 +177,9 @@ const getTeethString = (
     return mergeTeethIndividual([...upperTeethGroup, ...lowerTeethGroup]);
   }
 };
-export { getTeethString };
+
+const isExistTooth = (tooth: PalmerTeethTmp): tooth is PalmerTeeth => {
+  return PALMER_TEETH.includes(tooth as PalmerTeeth);
+};
+
+export { getTeethString, isExistTooth };
