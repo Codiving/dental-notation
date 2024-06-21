@@ -209,11 +209,24 @@ import {
   UniversalTeethWithTmp
 } from "./universal";
 import { convertTeeth } from "./utils/convertTeeth";
-import { isExistTooth as isExistFdiTooth } from "./utils/fdi";
+import { convertTeethWithTmp } from "./utils/convertTeethWithTmp";
+import {
+  FDI_TO_PALMER_WITH_TMP,
+  FDI_TO_UNIVERSAL_WITH_TMP,
+  isExistTooth as isExistFdiTooth
+} from "./utils/fdi";
 import { getTeethString } from "./utils/getTeethString";
-import { isExistTooth as isExistPalmerTooth } from "./utils/palmer";
+import {
+  PALMER_TO_FDI_WITH_TMP,
+  PALMER_TO_UNIVERSAL_WITH_TMP,
+  isExistTooth as isExistPalmerTooth
+} from "./utils/palmer";
 import { switchTeethWithTmp } from "./utils/switchTeethWithTmp";
-import { isExistTooth as isExistUniversalTooth } from "./utils/universal";
+import {
+  UNIVERSAL_TO_FDI_WITH_TMP,
+  UNIVERSAL_TO_PALMER_WITH_TMP,
+  isExistTooth as isExistUniversalTooth
+} from "./utils/universal";
 
 type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
 type TeethWithTmp =
@@ -258,6 +271,8 @@ export {
   FDI_TEETH,
   FDI_TEETH_NON_EXIST,
   FDI_TEETH_WITH_TMP,
+  FDI_TO_PALMER_WITH_TMP,
+  FDI_TO_UNIVERSAL_WITH_TMP,
   PALMER_BABY_TEETH,
   PALMER_BABY_TEETH_LEFT,
   PALMER_BABY_TEETH_LOWER,
@@ -292,6 +307,8 @@ export {
   PALMER_TEETH,
   PALMER_TEETH_NON_EXIST,
   PALMER_TEETH_WITH_TMP,
+  PALMER_TO_FDI_WITH_TMP,
+  PALMER_TO_UNIVERSAL_WITH_TMP,
   UNIVERSAL_BABY_TEETH,
   UNIVERSAL_BABY_TEETH_LEFT,
   UNIVERSAL_BABY_TEETH_LOWER,
@@ -326,7 +343,10 @@ export {
   UNIVERSAL_TEETH,
   UNIVERSAL_TEETH_NON_EXIST,
   UNIVERSAL_TEETH_WITH_TMP,
+  UNIVERSAL_TO_FDI_WITH_TMP,
+  UNIVERSAL_TO_PALMER_WITH_TMP,
   convertTeeth,
+  convertTeethWithTmp,
   getTeethString,
   isExistFdiTooth,
   isExistPalmerTooth,
