@@ -263,9 +263,7 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (
-  tooth: UniversalTeethWithTmp
-): tooth is UniversalTeeth => {
+const isExistTooth = (tooth: any): tooth is UniversalTeeth => {
   return UNIVERSAL_TEETH.includes(tooth as UniversalTeeth);
 };
 

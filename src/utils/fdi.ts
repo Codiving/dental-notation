@@ -411,7 +411,7 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: FdiTeethWithTmp): tooth is FdiTeeth => {
+const isExistTooth = (tooth: any): tooth is FdiTeeth => {
   return FDI_TEETH.includes(tooth as FdiTeeth);
 };
 

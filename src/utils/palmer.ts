@@ -318,7 +318,7 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: PalmerTeethWithTmp): tooth is PalmerTeeth => {
+const isExistTooth = (tooth: any): tooth is PalmerTeeth => {
   return PALMER_TEETH.includes(tooth as PalmerTeeth);
 };
 
