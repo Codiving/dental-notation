@@ -103,9 +103,9 @@ export type PalmerBabyTeethUpperLeft =
 export type PalmerBabyTeethUpper = (typeof PALMER_BABY_TEETH_UPPER)[number];
 
 export const PALMER_BABY_TEETH_UPPER_RIGHT_NON_EXIST = [
-  "HUL",
-  "GUL",
-  "FUL"
+  "HUR",
+  "GUR",
+  "FUR"
 ] as const;
 export const PALMER_BABY_TEETH_UPPER_RIGHT_WITH_TMP = [
   ...PALMER_BABY_TEETH_UPPER_RIGHT_NON_EXIST,
