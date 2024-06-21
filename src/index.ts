@@ -212,6 +212,7 @@ import { convertTeeth } from "./utils/convertTeeth";
 import { isExistTooth as isExistFdiTooth } from "./utils/fdi";
 import { getTeethString } from "./utils/getTeethString";
 import { isExistTooth as isExistPalmerTooth } from "./utils/palmer";
+import { switchTeethWithTmp } from "./utils/switchTeethWithTmp";
 import { isExistTooth as isExistUniversalTooth } from "./utils/universal";
 
 type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
@@ -329,7 +330,8 @@ export {
   getTeethString,
   isExistFdiTooth,
   isExistPalmerTooth,
-  isExistUniversalTooth
+  isExistUniversalTooth,
+  switchTeethWithTmp
 };
 
 export type {
