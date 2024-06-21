@@ -1,10 +1,12 @@
 import {
+  FDI_BABY_TEETH_WITH_TMP,
   FDI_PRIMARY_TEETH,
   FDI_PRIMARY_TEETH_LOWER_LEFT,
   FDI_PRIMARY_TEETH_LOWER_RIGHT,
   FDI_PRIMARY_TEETH_UPPER_LEFT,
   FDI_PRIMARY_TEETH_UPPER_RIGHT,
   FDI_TEETH,
+  FdiBabyTeethWithTmp,
   FdiPrimaryTeeth,
   FdiPrimaryTeethLowerLeft,
   FdiPrimaryTeethLowerRight,
@@ -16,6 +18,79 @@ import {
 import { PalmerTeethWithTmp } from "../palmer";
 import { UniversalTeethWithTmp } from "../universal";
 import { groupConsecutiveNumbers } from "./common";
+
+const PRIMARY_TO_BABY_WITH_TMP: {
+  [key in FdiPrimaryTeeth]: FdiBabyTeethWithTmp;
+} = {
+  18: 58,
+  17: 57,
+  16: 56,
+  15: 55,
+  14: 54,
+  13: 53,
+  12: 52,
+  11: 51,
+  21: 61,
+  22: 62,
+  23: 63,
+  24: 64,
+  25: 65,
+  26: 66,
+  27: 67,
+  28: 68,
+  48: 88,
+  47: 87,
+  46: 86,
+  45: 85,
+  44: 84,
+  43: 83,
+  42: 82,
+  41: 81,
+  31: 71,
+  32: 72,
+  33: 73,
+  34: 74,
+  35: 75,
+  36: 76,
+  37: 77,
+  38: 78
+};
+const BABY_TO_PRIMARY_WITH_TMP: {
+  [key in FdiBabyTeethWithTmp]: FdiPrimaryTeeth;
+} = {
+  58: 18,
+  57: 17,
+  56: 16,
+  55: 15,
+  54: 14,
+  53: 13,
+  52: 12,
+  51: 11,
+  61: 21,
+  62: 22,
+  63: 23,
+  64: 24,
+  65: 25,
+  66: 26,
+  67: 27,
+  68: 28,
+  88: 48,
+  87: 47,
+  86: 46,
+  85: 45,
+  84: 44,
+  83: 43,
+  82: 42,
+  81: 41,
+  71: 31,
+  72: 32,
+  73: 33,
+  74: 34,
+  75: 35,
+  76: 36,
+  77: 37,
+  78: 38
+};
 
 export const FDI_TO_UNIVERSAL_WITH_TMP: {
   [key in FdiTeethWithTmp]: UniversalTeethWithTmp;
@@ -153,6 +228,26 @@ export const FDI_TO_PALMER_WITH_TMP: {
   76: "FLL",
   77: "GLL",
   78: "HLL"
+};
+
+export const switchTeethWithTmp = (
+  teeth: FdiTeethWithTmp[]
+): FdiTeethWithTmp[] => {
+  const primaryTeeth: FdiPrimaryTeeth[] = teeth.filter(tooth =>
+    FDI_PRIMARY_TEETH.includes(tooth as FdiPrimaryTeeth)
+  ) as FdiPrimaryTeeth[];
+  const babyTeethWithTmp: FdiBabyTeethWithTmp[] = teeth.filter(tooth =>
+    FDI_BABY_TEETH_WITH_TMP.includes(tooth as FdiBabyTeethWithTmp)
+  ) as FdiBabyTeethWithTmp[];
+
+  const resultPrimaryTeeth = babyTeethWithTmp.map(
+    tooth => BABY_TO_PRIMARY_WITH_TMP[tooth]
+  );
+  const resultBabyTeeth = primaryTeeth.map(
+    tooth => PRIMARY_TO_BABY_WITH_TMP[tooth]
+  );
+
+  return [...resultPrimaryTeeth, ...resultBabyTeeth];
 };
 
 const convertAdultTooth = (tooth: FdiTeeth): FdiPrimaryTeeth => {
