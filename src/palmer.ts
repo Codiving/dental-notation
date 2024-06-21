@@ -107,7 +107,7 @@ export const PALMER_BABY_TEETH_UPPER_RIGHT_NON_EXIST = [
   "GUL",
   "FUL"
 ] as const;
-export const PALMER_BABY_TEETH_UPPER_RIGHT_TMP = [
+export const PALMER_BABY_TEETH_UPPER_RIGHT_WITH_TMP = [
   ...PALMER_BABY_TEETH_UPPER_RIGHT_NON_EXIST,
   ...PALMER_BABY_TEETH_UPPER_RIGHT
 ] as const;
@@ -116,7 +116,7 @@ export const PALMER_BABY_TEETH_UPPER_LEFT_NON_EXIST = [
   "GUL",
   "HUL"
 ] as const;
-export const PALMER_BABY_TEETH_UPPER_LEFT_TMP = [
+export const PALMER_BABY_TEETH_UPPER_LEFT_WITH_TMP = [
   ...PALMER_BABY_TEETH_UPPER_LEFT,
   ...PALMER_BABY_TEETH_UPPER_LEFT_NON_EXIST
 ] as const;
@@ -124,22 +124,22 @@ export const PALMER_BABY_TEETH_UPPER_NON_EXIST = [
   ...PALMER_BABY_TEETH_UPPER_RIGHT_NON_EXIST,
   ...PALMER_BABY_TEETH_UPPER_LEFT_NON_EXIST
 ] as const;
-export const PALMER_BABY_TEETH_UPPER_TMP = [
-  ...PALMER_BABY_TEETH_UPPER_RIGHT_TMP,
-  ...PALMER_BABY_TEETH_UPPER_LEFT_TMP
+export const PALMER_BABY_TEETH_UPPER_WITH_TMP = [
+  ...PALMER_BABY_TEETH_UPPER_RIGHT_WITH_TMP,
+  ...PALMER_BABY_TEETH_UPPER_LEFT_WITH_TMP
 ] as const;
 export type PalmerBabyTeethUpperRightNonExist =
   (typeof PALMER_BABY_TEETH_UPPER_RIGHT_NON_EXIST)[number];
-export type PalmerBabyTeethUpperRightTmp =
-  (typeof PALMER_BABY_TEETH_UPPER_RIGHT_TMP)[number];
+export type PalmerBabyTeethUpperRightWithTmp =
+  (typeof PALMER_BABY_TEETH_UPPER_RIGHT_WITH_TMP)[number];
 export type PalmerBabyTeethUpperLeftNonExist =
   (typeof PALMER_BABY_TEETH_UPPER_LEFT_NON_EXIST)[number];
-export type PalmerBabyTeethUpperLeftTmp =
-  (typeof PALMER_BABY_TEETH_UPPER_LEFT_TMP)[number];
+export type PalmerBabyTeethUpperLeftWithTmp =
+  (typeof PALMER_BABY_TEETH_UPPER_LEFT_WITH_TMP)[number];
 export type PalmerBabyTeethUpperNonExist =
   (typeof PALMER_BABY_TEETH_UPPER_NON_EXIST)[number];
-export type PalmerBabyTeethUpperTmp =
-  (typeof PALMER_BABY_TEETH_UPPER_TMP)[number];
+export type PalmerBabyTeethUpperWithTmp =
+  (typeof PALMER_BABY_TEETH_UPPER_WITH_TMP)[number];
 
 export const PALMER_BABY_TEETH_LOWER_RIGHT = [
   "ELR",
@@ -170,7 +170,7 @@ export const PALMER_BABY_TEETH_LOWER_RIGHT_NON_EXIST = [
   "GLR",
   "FLR"
 ] as const;
-export const PALMER_BABY_TEETH_LOWER_RIGHT_TMP = [
+export const PALMER_BABY_TEETH_LOWER_RIGHT_WITH_TMP = [
   ...PALMER_BABY_TEETH_LOWER_RIGHT_NON_EXIST,
   ...PALMER_BABY_TEETH_LOWER_RIGHT
 ] as const;
@@ -179,7 +179,7 @@ export const PALMER_BABY_TEETH_LOWER_LEFT_NON_EXIST = [
   "GLL",
   "HLL"
 ] as const;
-export const PALMER_BABY_TEETH_LOWER_LEFT_TMP = [
+export const PALMER_BABY_TEETH_LOWER_LEFT_WITH_TMP = [
   ...PALMER_BABY_TEETH_LOWER_LEFT,
   ...PALMER_BABY_TEETH_LOWER_LEFT_NON_EXIST
 ] as const;
@@ -187,16 +187,16 @@ export const PALMER_BABY_TEETH_LOWER_NON_EXIST = [
   ...PALMER_BABY_TEETH_LOWER_RIGHT_NON_EXIST,
   ...PALMER_BABY_TEETH_LOWER_LEFT_NON_EXIST
 ] as const;
-export const PALMER_BABY_TEETH_LOWER_TMP = [
-  ...PALMER_BABY_TEETH_LOWER_RIGHT_TMP,
-  ...PALMER_BABY_TEETH_LOWER_LEFT_TMP
+export const PALMER_BABY_TEETH_LOWER_WITH_TMP = [
+  ...PALMER_BABY_TEETH_LOWER_RIGHT_WITH_TMP,
+  ...PALMER_BABY_TEETH_LOWER_LEFT_WITH_TMP
 ] as const;
-export type PalmerBabyTeethLowerRightTmp =
-  (typeof PALMER_BABY_TEETH_LOWER_RIGHT_TMP)[number];
-export type PalmerBabyTeethLowerLeftTmp =
-  (typeof PALMER_BABY_TEETH_LOWER_LEFT_TMP)[number];
-export type PalmerBabyTeethLowerTmp =
-  (typeof PALMER_BABY_TEETH_LOWER_TMP)[number];
+export type PalmerBabyTeethLowerRightWithTmp =
+  (typeof PALMER_BABY_TEETH_LOWER_RIGHT_WITH_TMP)[number];
+export type PalmerBabyTeethLowerLeftWithTmp =
+  (typeof PALMER_BABY_TEETH_LOWER_LEFT_WITH_TMP)[number];
+export type PalmerBabyTeethLowerWithTmp =
+  (typeof PALMER_BABY_TEETH_LOWER_WITH_TMP)[number];
 export type PalmerBabyTeethLowerRightNonExist =
   (typeof PALMER_BABY_TEETH_LOWER_RIGHT_NON_EXIST)[number];
 export type PalmerBabyTeethLowerLeftNonExist =
@@ -227,11 +227,12 @@ export const PALMER_TEETH = [
 ] as const;
 export type PalmerTeeth = (typeof PALMER_TEETH)[number];
 
-export const PALMER_BABY_TEETH_TMP = [
-  ...PALMER_BABY_TEETH_UPPER_TMP,
-  ...PALMER_BABY_TEETH_LOWER_TMP
+export const PALMER_BABY_TEETH_WITH_TMP = [
+  ...PALMER_BABY_TEETH_UPPER_WITH_TMP,
+  ...PALMER_BABY_TEETH_LOWER_WITH_TMP
 ] as const;
-export type PalmerBabyTeethTmp = (typeof PALMER_BABY_TEETH_TMP)[number];
+export type PalmerBabyTeethWithTmp =
+  (typeof PALMER_BABY_TEETH_WITH_TMP)[number];
 
 export const PALMER_TEETH_NON_EXIST = [
   ...PALMER_BABY_TEETH_UPPER_NON_EXIST,
@@ -239,8 +240,8 @@ export const PALMER_TEETH_NON_EXIST = [
 ] as const;
 export type PalmerTeethNonExist = (typeof PALMER_TEETH_NON_EXIST)[number];
 
-export const PALMER_TEETH_TMP = [
+export const PALMER_TEETH_WITH_TMP = [
   ...PALMER_PRIMARY_TEETH,
-  ...PALMER_BABY_TEETH_TMP
+  ...PALMER_BABY_TEETH_WITH_TMP
 ] as const;
-export type PalmerTeethTmp = (typeof PALMER_TEETH_TMP)[number];
+export type PalmerTeethWithTmp = (typeof PALMER_TEETH_WITH_TMP)[number];

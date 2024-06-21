@@ -11,7 +11,7 @@ import {
   FdiPrimaryTeethUpperLeft,
   FdiPrimaryTeethUpperRight,
   FdiTeeth,
-  FdiTeethTmp
+  FdiTeethWithTmp
 } from "../fdi";
 import { groupConsecutiveNumbers } from "./common";
 
@@ -176,7 +176,7 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: FdiTeethTmp): tooth is FdiTeeth => {
+const isExistTooth = (tooth: FdiTeethWithTmp): tooth is FdiTeeth => {
   return FDI_TEETH.includes(tooth as FdiTeeth);
 };
 

@@ -2,7 +2,7 @@ import {
   PALMER_TEETH,
   PalmerBabyTeeth,
   PalmerTeeth,
-  PalmerTeethTmp
+  PalmerTeethWithTmp
 } from "../palmer";
 import {
   groupConsecutiveNumbers,
@@ -178,7 +178,7 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: PalmerTeethTmp): tooth is PalmerTeeth => {
+const isExistTooth = (tooth: PalmerTeethWithTmp): tooth is PalmerTeeth => {
   return PALMER_TEETH.includes(tooth as PalmerTeeth);
 };
 

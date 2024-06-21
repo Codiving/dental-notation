@@ -1,12 +1,12 @@
-import { FdiTeethTmp, PalmerTeethTmp, UniversalTeethTmp } from "..";
+import { FdiTeethWithTmp, PalmerTeethWithTmp, UniversalTeethWithTmp } from "..";
 import { isExistTooth as isExistFdiTooth } from "../utils/fdi";
-import { isExistTooth as isExistUniversalTooth } from "../utils/universal";
 import { isExistTooth as isExistPalmerTooth } from "../utils/palmer";
+import { isExistTooth as isExistUniversalTooth } from "../utils/universal";
 
 describe("isExistTooth function", () => {
   describe("fdi", () => {
-    const fdiTooth: FdiTeethTmp = 18;
-    const nonFdiTooth: FdiTeethTmp = 88;
+    const fdiTooth: FdiTeethWithTmp = 18;
+    const nonFdiTooth: FdiTeethWithTmp = 88;
 
     it("18 is fdi tooth.", () => {
       expect(isExistFdiTooth(fdiTooth)).toBeTruthy();
@@ -18,8 +18,8 @@ describe("isExistTooth function", () => {
   });
 
   describe("universal", () => {
-    const universalTooth: UniversalTeethTmp = "K";
-    const nonUniversalTooth: UniversalTeethTmp = "K0";
+    const universalTooth: UniversalTeethWithTmp = "K";
+    const nonUniversalTooth: UniversalTeethWithTmp = "K0";
 
     it("K is universal tooth.", () => {
       expect(isExistUniversalTooth(universalTooth)).toBeTruthy();
@@ -31,8 +31,8 @@ describe("isExistTooth function", () => {
   });
 
   describe("palmer", () => {
-    const palmerTooth: PalmerTeethTmp = "ELL";
-    const nonPalmerTooth: PalmerTeethTmp = "FLL";
+    const palmerTooth: PalmerTeethWithTmp = "ELL";
+    const nonPalmerTooth: PalmerTeethWithTmp = "FLL";
 
     it("ELL is palmer tooth.", () => {
       expect(isExistPalmerTooth(palmerTooth)).toBeTruthy();

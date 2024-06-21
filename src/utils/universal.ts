@@ -4,7 +4,7 @@ import {
   UniversalBabyTeeth,
   UniversalPrimaryTeeth,
   UniversalTeeth,
-  UniversalTeethTmp
+  UniversalTeethWithTmp
 } from "../universal";
 import {
   groupConsecutiveNumbers,
@@ -123,7 +123,9 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: UniversalTeethTmp): tooth is UniversalTeeth => {
+const isExistTooth = (
+  tooth: UniversalTeethWithTmp
+): tooth is UniversalTeeth => {
   return UNIVERSAL_TEETH.includes(tooth as UniversalTeeth);
 };
 

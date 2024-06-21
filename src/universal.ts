@@ -109,7 +109,7 @@ export const UNIVERSAL_BABY_TEETH_UPPER_RIGHT_NON_EXIST = [
   "A1",
   "A0"
 ] as const;
-export const UNIVERSAL_BABY_TEETH_UPPER_RIGHT_TMP = [
+export const UNIVERSAL_BABY_TEETH_UPPER_RIGHT_WITH_TMP = [
   ...UNIVERSAL_BABY_TEETH_UPPER_RIGHT_NON_EXIST,
   ...UNIVERSAL_BABY_TEETH_UPPER_RIGHT
 ] as const;
@@ -118,7 +118,7 @@ export const UNIVERSAL_BABY_TEETH_UPPER_LEFT_NON_EXIST = [
   "J1",
   "J2"
 ] as const;
-export const UNIVERSAL_BABY_TEETH_UPPER_LEFT_TMP = [
+export const UNIVERSAL_BABY_TEETH_UPPER_LEFT_WITH_TMP = [
   ...UNIVERSAL_BABY_TEETH_UPPER_LEFT,
   ...UNIVERSAL_BABY_TEETH_UPPER_LEFT_NON_EXIST
 ] as const;
@@ -126,22 +126,22 @@ export const UNIVERSAL_BABY_TEETH_UPPER_NON_EXIST = [
   ...UNIVERSAL_BABY_TEETH_UPPER_RIGHT_NON_EXIST,
   ...UNIVERSAL_BABY_TEETH_UPPER_LEFT_NON_EXIST
 ] as const;
-export const UNIVERSAL_BABY_TEETH_UPPER_TMP = [
-  ...UNIVERSAL_BABY_TEETH_UPPER_RIGHT_TMP,
-  ...UNIVERSAL_BABY_TEETH_UPPER_LEFT_TMP
+export const UNIVERSAL_BABY_TEETH_UPPER_WITH_TMP = [
+  ...UNIVERSAL_BABY_TEETH_UPPER_RIGHT_WITH_TMP,
+  ...UNIVERSAL_BABY_TEETH_UPPER_LEFT_WITH_TMP
 ] as const;
 export type UniversalBabyTeethUpperRightNonExist =
   (typeof UNIVERSAL_BABY_TEETH_UPPER_RIGHT_NON_EXIST)[number];
-export type UniversalBabyTeethUpperRightTmp =
-  (typeof UNIVERSAL_BABY_TEETH_UPPER_RIGHT_TMP)[number];
+export type UniversalBabyTeethUpperRightWithTmp =
+  (typeof UNIVERSAL_BABY_TEETH_UPPER_RIGHT_WITH_TMP)[number];
 export type UniversalBabyTeethUpperLeftNonExist =
   (typeof UNIVERSAL_BABY_TEETH_UPPER_LEFT_NON_EXIST)[number];
-export type UniversalBabyTeethUpperLeftTmp =
-  (typeof UNIVERSAL_BABY_TEETH_UPPER_LEFT_TMP)[number];
+export type UniversalBabyTeethUpperLeftWithTmp =
+  (typeof UNIVERSAL_BABY_TEETH_UPPER_LEFT_WITH_TMP)[number];
 export type UniversalBabyTeethUpperNonExist =
   (typeof UNIVERSAL_BABY_TEETH_UPPER_NON_EXIST)[number];
-export type UniversalBabyTeethUpperTmp =
-  (typeof UNIVERSAL_BABY_TEETH_UPPER_TMP)[number];
+export type UniversalBabyTeethUpperWithTmp =
+  (typeof UNIVERSAL_BABY_TEETH_UPPER_WITH_TMP)[number];
 
 export const UNIVERSAL_BABY_TEETH_LOWER_RIGHT = [
   "T",
@@ -173,7 +173,7 @@ export const UNIVERSAL_BABY_TEETH_LOWER_RIGHT_NON_EXIST = [
   "T1",
   "T0"
 ] as const;
-export const UNIVERSAL_BABY_TEETH_LOWER_RIGHT_TMP = [
+export const UNIVERSAL_BABY_TEETH_LOWER_RIGHT_WITH_TMP = [
   ...UNIVERSAL_BABY_TEETH_LOWER_RIGHT_NON_EXIST,
   ...UNIVERSAL_BABY_TEETH_LOWER_RIGHT
 ] as const;
@@ -182,7 +182,7 @@ export const UNIVERSAL_BABY_TEETH_LOWER_LEFT_NON_EXIST = [
   "K1",
   "k2"
 ] as const;
-export const UNIVERSAL_BABY_TEETH_LOWER_LEFT_TMP = [
+export const UNIVERSAL_BABY_TEETH_LOWER_LEFT_WITH_TMP = [
   ...UNIVERSAL_BABY_TEETH_LOWER_LEFT,
   ...UNIVERSAL_BABY_TEETH_LOWER_LEFT_NON_EXIST
 ] as const;
@@ -190,16 +190,16 @@ export const UNIVERSAL_BABY_TEETH_LOWER_NON_EXIST = [
   ...UNIVERSAL_BABY_TEETH_LOWER_RIGHT_NON_EXIST,
   ...UNIVERSAL_BABY_TEETH_LOWER_LEFT_NON_EXIST
 ] as const;
-export const UNIVERSAL_BABY_TEETH_LOWER_TMP = [
-  ...UNIVERSAL_BABY_TEETH_LOWER_RIGHT_TMP,
-  ...UNIVERSAL_BABY_TEETH_LOWER_LEFT_TMP
+export const UNIVERSAL_BABY_TEETH_LOWER_WITH_TMP = [
+  ...UNIVERSAL_BABY_TEETH_LOWER_RIGHT_WITH_TMP,
+  ...UNIVERSAL_BABY_TEETH_LOWER_LEFT_WITH_TMP
 ] as const;
-export type UniversalBabyTeethLowerRightTmp =
-  (typeof UNIVERSAL_BABY_TEETH_LOWER_RIGHT_TMP)[number];
-export type UniversalBabyTeethLowerLeftTmp =
-  (typeof UNIVERSAL_BABY_TEETH_LOWER_LEFT_TMP)[number];
-export type UniversalBabyTeethLowerTmp =
-  (typeof UNIVERSAL_BABY_TEETH_LOWER_TMP)[number];
+export type UniversalBabyTeethLowerRightWithTmp =
+  (typeof UNIVERSAL_BABY_TEETH_LOWER_RIGHT_WITH_TMP)[number];
+export type UniversalBabyTeethLowerLeftWithTmp =
+  (typeof UNIVERSAL_BABY_TEETH_LOWER_LEFT_WITH_TMP)[number];
+export type UniversalBabyTeethLowerWithTmp =
+  (typeof UNIVERSAL_BABY_TEETH_LOWER_WITH_TMP)[number];
 export type UniversalBabyTeethLowerRightNonExist =
   (typeof UNIVERSAL_BABY_TEETH_LOWER_RIGHT_NON_EXIST)[number];
 export type UniversalBabyTeethLowerLeftNonExist =
@@ -231,11 +231,12 @@ export const UNIVERSAL_TEETH = [
 ] as const;
 export type UniversalTeeth = (typeof UNIVERSAL_TEETH)[number];
 
-export const UNIVERSAL_BABY_TEETH_TMP = [
-  ...UNIVERSAL_BABY_TEETH_UPPER_TMP,
-  ...UNIVERSAL_BABY_TEETH_LOWER_TMP
+export const UNIVERSAL_BABY_TEETH_WITH_TMP = [
+  ...UNIVERSAL_BABY_TEETH_UPPER_WITH_TMP,
+  ...UNIVERSAL_BABY_TEETH_LOWER_WITH_TMP
 ] as const;
-export type UniversalBabyTeethTmp = (typeof UNIVERSAL_BABY_TEETH_TMP)[number];
+export type UniversalBabyTeethWithTmp =
+  (typeof UNIVERSAL_BABY_TEETH_WITH_TMP)[number];
 
 export const UNIVERSAL_TEETH_NON_EXIST = [
   ...UNIVERSAL_BABY_TEETH_UPPER_NON_EXIST,
@@ -243,8 +244,8 @@ export const UNIVERSAL_TEETH_NON_EXIST = [
 ] as const;
 export type UniversalTeethNonExist = (typeof UNIVERSAL_TEETH_NON_EXIST)[number];
 
-export const UNIVERSAL_TEETH_TMP = [
+export const UNIVERSAL_TEETH_WITH_TMP = [
   ...UNIVERSAL_PRIMARY_TEETH,
-  ...UNIVERSAL_BABY_TEETH_TMP
+  ...UNIVERSAL_BABY_TEETH_WITH_TMP
 ] as const;
-export type UniversalTeethTmp = (typeof UNIVERSAL_TEETH_TMP)[number];
+export type UniversalTeethWithTmp = (typeof UNIVERSAL_TEETH_WITH_TMP)[number];
