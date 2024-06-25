@@ -7,23 +7,6 @@ import { getTeethString as getTeethStringPalmer } from "./palmer";
 import { getTeethString as getTeethStringUniversal } from "./universal";
 
 export function getTeethString(
-  teeth: FdiTeeth[],
-  type?: "range" | "individual",
-  prefix?: string
-): string;
-
-export function getTeethString(
-  teeth: UniversalTeeth[],
-  type?: "range" | "individual",
-  prefix?: string
-): string;
-
-export function getTeethString(
-  teeth: PalmerTeeth[],
-  type?: "range" | "individual"
-): string;
-
-export function getTeethString(
   teeth: FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[],
   type: "range" | "individual" = "range",
   prefix: string = "#"
