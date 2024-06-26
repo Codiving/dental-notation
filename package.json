@@ -8,6 +8,7 @@
   "repository": {
     "url": "https://github.com/Codiving/dental-notation"
   },
+  "homepage": "https://dental-notation-docs.vercel.app/",
   "scripts": {
     "build": "tsup",
     "dev": "ts-node src/index.ts",
