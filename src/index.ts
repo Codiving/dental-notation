@@ -69,7 +69,11 @@ import {
   FdiPrimaryTeethUpperLeft,
   FdiPrimaryTeethUpperRight,
   FdiTeeth,
+  FdiTeethLowerLeftWithTmp,
+  FdiTeethLowerRightWithTmp,
   FdiTeethNonExist,
+  FdiTeethUpperLeftWithTmp,
+  FdiTeethUpperRightWithTmp,
   FdiTeethWithTmp
 } from "./fdi";
 import {
@@ -395,7 +399,11 @@ export type {
   FdiPrimaryTeethUpperLeft,
   FdiPrimaryTeethUpperRight,
   FdiTeeth,
+  FdiTeethLowerLeftWithTmp,
+  FdiTeethLowerRightWithTmp,
   FdiTeethNonExist,
+  FdiTeethUpperLeftWithTmp,
+  FdiTeethUpperRightWithTmp,
   FdiTeethWithTmp,
   NotationType,
   PalmerBabyTeeth,
