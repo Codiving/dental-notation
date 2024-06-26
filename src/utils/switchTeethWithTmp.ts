@@ -8,6 +8,16 @@ import { switchTeethWithTmp as switchTeethWithTmpFdi } from "./fdi";
 /**
  * Switch Primary Teeth to Baby Teeth and Baby Teeth to Primary Teeth.
  */
+export function switchTeethWithTmp(teeth: FdiTeethWithTmp[]): FdiTeethWithTmp[];
+
+export function switchTeethWithTmp(
+  teeth: UniversalTeethWithTmp[]
+): UniversalTeethWithTmp[];
+
+export function switchTeethWithTmp(
+  teeth: UniversalTeethWithTmp[]
+): UniversalTeethWithTmp[];
+
 export function switchTeethWithTmp(
   teeth: FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[]
 ): FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[] {
