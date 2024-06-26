@@ -175,18 +175,26 @@ export const FDI_TEETH_UPPER_RIGHT_WITH_TMP = [
   ...FDI_PRIMARY_TEETH_UPPER_RIGHT,
   ...FDI_BABY_TEETH_UPPER_RIGHT_WITH_TMP
 ] as const;
+export type FdiTeethUpperRightWithTmp =
+  (typeof FDI_TEETH_UPPER_RIGHT_WITH_TMP)[number];
 
 export const FDI_TEETH_UPPER_LEFT_WITH_TMP = [
   ...FDI_PRIMARY_TEETH_UPPER_LEFT,
   ...FDI_BABY_TEETH_UPPER_LEFT_WITH_TMP
 ] as const;
+export type FdiTeethUpperLeftWithTmp =
+  (typeof FDI_TEETH_UPPER_LEFT_WITH_TMP)[number];
 
 export const FDI_TEETH_LOWER_RIGHT_WITH_TMP = [
   ...FDI_PRIMARY_TEETH_LOWER_RIGHT,
   ...FDI_BABY_TEETH_LOWER_RIGHT_WITH_TMP
 ] as const;
+export type FdiTeethLowerRightWithTmp =
+  (typeof FDI_TEETH_LOWER_RIGHT_WITH_TMP)[number];
 
 export const FDI_TEETH_LOWER_LEFT_WITH_TMP = [
   ...FDI_PRIMARY_TEETH_LOWER_LEFT,
   ...FDI_BABY_TEETH_LOWER_LEFT_WITH_TMP
 ] as const;
+export type FdiTeethLowerLeftWithTmp =
+  (typeof FDI_TEETH_LOWER_LEFT_WITH_TMP)[number];
