@@ -173,6 +173,14 @@ const palmer3: PalmerTeeth[] = [
 ];
 
 describe("convertTeeth", () => {
+  test("infers the target array type from the target notation", () => {
+    const universal: UniversalTeeth[] = convertTeeth(fdi1, "universal");
+    const palmer: PalmerTeeth[] = convertTeeth(universal, "palmer");
+    const fdi: FdiTeeth[] = convertTeeth(palmer, "fdi");
+
+    expect(fdi).toEqual(fdi1);
+  });
+
   test("fdi to universal", () => {
     expect(convertTeeth(fdi1, "universal")).toEqual(universal1);
     expect(convertTeeth(fdi2, "universal")).toEqual(universal2);

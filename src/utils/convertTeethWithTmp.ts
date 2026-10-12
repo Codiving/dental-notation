@@ -10,6 +10,46 @@ import {
 } from "./universal";
 
 export function convertTeethWithTmp(
+  teeth: FdiTeethWithTmp[],
+  to: "fdi"
+): FdiTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: FdiTeethWithTmp[],
+  to: "universal"
+): UniversalTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: FdiTeethWithTmp[],
+  to: "palmer"
+): PalmerTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: UniversalTeethWithTmp[],
+  to: "fdi"
+): FdiTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: UniversalTeethWithTmp[],
+  to: "universal"
+): UniversalTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: UniversalTeethWithTmp[],
+  to: "palmer"
+): PalmerTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: PalmerTeethWithTmp[],
+  to: "fdi"
+): FdiTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: PalmerTeethWithTmp[],
+  to: "universal"
+): UniversalTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: PalmerTeethWithTmp[],
+  to: "palmer"
+): PalmerTeethWithTmp[];
+export function convertTeethWithTmp(
+  teeth: FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[],
+  to: NotationType
+): FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[];
+export function convertTeethWithTmp(
   teeth: FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[],
   to: NotationType
 ): FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[] {
