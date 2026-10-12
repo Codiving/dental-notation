@@ -127,7 +127,7 @@ isPalmerTooth("8UR"); // true
 
 #### function : getToothSlots
 
-Returns 32 slots in chart order (upper-right, upper-left, lower-right, lower-left) for building a dental chart.  
+Returns 32 slots in chart order (upper-right, upper-left, lower-right, lower-left) for building a dental chart.
 Permanent and deciduous slots share the same `quadrant` and `slot` positions.
 
 ```ts

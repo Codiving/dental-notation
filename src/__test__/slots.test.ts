@@ -26,9 +26,27 @@ describe("getToothSlots", () => {
     expect(slots.filter(slot => slot.kind === "tooth")).toHaveLength(20);
     expect(slots.filter(slot => slot.kind === "placeholder")).toHaveLength(12);
     expect(slots.slice(0, 3)).toEqual([
-      { quadrant: "upper-right", slot: 1, kind: "placeholder", tooth: null, placeholder: "A2" },
-      { quadrant: "upper-right", slot: 2, kind: "placeholder", tooth: null, placeholder: "A1" },
-      { quadrant: "upper-right", slot: 3, kind: "placeholder", tooth: null, placeholder: "A0" }
+      {
+        quadrant: "upper-right",
+        slot: 1,
+        kind: "placeholder",
+        tooth: null,
+        placeholder: "A2"
+      },
+      {
+        quadrant: "upper-right",
+        slot: 2,
+        kind: "placeholder",
+        tooth: null,
+        placeholder: "A1"
+      },
+      {
+        quadrant: "upper-right",
+        slot: 3,
+        kind: "placeholder",
+        tooth: null,
+        placeholder: "A0"
+      }
     ]);
   });
 
@@ -37,7 +55,11 @@ describe("getToothSlots", () => {
     const first = slots[0];
     const fourth = slots[3];
 
-    expect(first).toMatchObject({ kind: "placeholder", tooth: null, placeholder: "HUR" });
+    expect(first).toMatchObject({
+      kind: "placeholder",
+      tooth: null,
+      placeholder: "HUR"
+    });
     expect(fourth).toMatchObject({ kind: "tooth", tooth: "EUR" });
   });
 
@@ -46,7 +68,9 @@ describe("getToothSlots", () => {
     const universal = getToothSlots("universal", "permanent");
     const palmer = getToothSlots("palmer", "permanent");
 
-    expect(positions(getToothSlots("fdi", "deciduous"))).toEqual(positions(fdi));
+    expect(positions(getToothSlots("fdi", "deciduous"))).toEqual(
+      positions(fdi)
+    );
     expect(switchDentition(values(fdi))).toEqual(
       values(getToothSlots("fdi", "deciduous"))
     );
