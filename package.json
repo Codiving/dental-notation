@@ -1,6 +1,6 @@
 {
   "name": "dental-notation",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This package facilitates easy manipulation of commonly used dental notation methods in dentistry, covering a total of three dental notations: FDI, Universal, and Palmer.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

@@ -1,4 +1,7 @@
 import {
+  FDI_DECIDUOUS_TEETH_UPPER_WITH_PLACEHOLDER,
+  FDI_PERMANENT_TEETH_UPPER_RIGHT,
+  FdiPermanentTeethUpperRight,
   convertTeethWithPlaceholder,
   formatTeeth,
   isFdiTooth,
@@ -7,7 +10,15 @@ import {
   switchDentition
 } from "..";
 
-describe("public naming aliases", () => {
+describe("canonical public naming", () => {
+  it("exposes canonical dentition and placeholder names", () => {
+    const permanent: FdiPermanentTeethUpperRight =
+      FDI_PERMANENT_TEETH_UPPER_RIGHT[0];
+
+    expect(permanent).toBe(18);
+    expect(FDI_DECIDUOUS_TEETH_UPPER_WITH_PLACEHOLDER).toHaveLength(16);
+  });
+
   it("exposes descriptive names for placeholder conversion", () => {
     expect(convertTeethWithPlaceholder([58], "universal")).toEqual(["A2"]);
   });
