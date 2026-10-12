@@ -230,6 +230,7 @@ import {
   isExistTooth as isExistPalmerTooth
 } from "./utils/palmer";
 import { switchTeethWithTmp } from "./utils/switchTeethWithTmp";
+import { getToothSlots } from "./slots";
 import {
   UNIVERSAL_TO_FDI_WITH_TMP,
   UNIVERSAL_TO_PALMER_WITH_TMP,
@@ -360,6 +361,7 @@ export {
   convertTeeth,
   convertTeethWithTmp,
   getTeethString,
+  getToothSlots,
   isExistFdiTooth,
   isExistPalmerTooth,
   isExistUniversalTooth,
@@ -477,6 +479,13 @@ export type {
   UniversalTeethNonExist,
   UniversalTeethWithTmp
 };
+
+export type {
+  Dentition,
+  SlotNotation,
+  ToothQuadrant,
+  ToothSlot
+} from "./slots";
 
 export {
   FDI_PERMANENT_TEETH,
