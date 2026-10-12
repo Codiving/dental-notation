@@ -218,6 +218,7 @@ import {
 } from "./universal";
 import { convertTeeth } from "./utils/convertTeeth";
 import { convertTeethWithTmp } from "./utils/convertTeethWithTmp";
+import { convertTeethWithPlaceholder } from "./utils/convertTeethWithPlaceholder";
 import {
   FDI_TO_PALMER_WITH_TMP,
   FDI_TO_UNIVERSAL_WITH_TMP,
@@ -230,12 +231,17 @@ import {
   isExistTooth as isExistPalmerTooth
 } from "./utils/palmer";
 import { switchTeethWithTmp } from "./utils/switchTeethWithTmp";
+import { switchDentition } from "./utils/switchDentition";
+import { formatTeeth } from "./utils/formatTeeth";
 import { getToothSlots } from "./slots";
 import {
   UNIVERSAL_TO_FDI_WITH_TMP,
   UNIVERSAL_TO_PALMER_WITH_TMP,
   isExistTooth as isExistUniversalTooth
 } from "./utils/universal";
+import { isRealTooth as isFdiTooth } from "./utils/fdi";
+import { isRealTooth as isUniversalTooth } from "./utils/universal";
+import { isRealTooth as isPalmerTooth } from "./utils/palmer";
 
 type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
 type TeethWithTmp =
@@ -360,12 +366,18 @@ export {
   UNIVERSAL_TO_PALMER_WITH_TMP,
   convertTeeth,
   convertTeethWithTmp,
+  convertTeethWithPlaceholder,
+  formatTeeth,
   getTeethString,
   getToothSlots,
   isExistFdiTooth,
   isExistPalmerTooth,
   isExistUniversalTooth,
-  switchTeethWithTmp
+  isFdiTooth,
+  isPalmerTooth,
+  isUniversalTooth,
+  switchTeethWithTmp,
+  switchDentition
 };
 
 export type {
