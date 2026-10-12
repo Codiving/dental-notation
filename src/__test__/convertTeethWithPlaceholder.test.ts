@@ -48,6 +48,15 @@ describe("convertTeethWithPlaceholder", () => {
 });
 
 describe("switchDentition", () => {
+  it("throws the same error for unknown or mixed values", () => {
+    expect(() => switchDentition(["unknown"] as any)).toThrow(
+      "Invalid mixed or unknown tooth notation: unknown"
+    );
+    expect(() => switchDentition([18, "A"] as any)).toThrow(
+      "Invalid mixed or unknown tooth notation: A"
+    );
+  });
+
   it("keeps the input notation when the first value is a placeholder", () => {
     expect(switchDentition([58])).toEqual([18]);
     expect(switchDentition(["A2"])).toEqual(["1"]);
