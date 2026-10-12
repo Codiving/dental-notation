@@ -1,14 +1,13 @@
 import {
-  FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER,
   FDI_PERMANENT_TEETH,
-  PALMER_DECIDUOUS_TEETH_WITH_PLACEHOLDER,
   PALMER_PERMANENT_TEETH,
-  UNIVERSAL_DECIDUOUS_TEETH_WITH_PLACEHOLDER,
   UNIVERSAL_PERMANENT_TEETH,
   convertTeeth,
   convertTeethWithPlaceholder
 } from "..";
-import { FdiTeeth } from "../fdi";
+import { FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER, FdiTeeth } from "../fdi";
+import { PALMER_DECIDUOUS_TEETH_WITH_PLACEHOLDER } from "../palmer";
+import { UNIVERSAL_DECIDUOUS_TEETH_WITH_PLACEHOLDER } from "../universal";
 
 describe("complete clinical notation mappings", () => {
   it("round-trips all 32 permanent teeth through every notation", () => {
@@ -24,8 +23,8 @@ describe("complete clinical notation mappings", () => {
 
   it("round-trips all 20 deciduous teeth through every notation", () => {
     const fdi: FdiTeeth[] = [
-      51, 52, 53, 54, 55, 61, 62, 63, 64, 65, 71, 72, 73, 74, 75, 81, 82,
-      83, 84, 85
+      51, 52, 53, 54, 55, 61, 62, 63, 64, 65, 71, 72, 73, 74, 75, 81, 82, 83,
+      84, 85
     ];
     const universal = convertTeeth(fdi, "universal");
     const palmer = convertTeeth(universal, "palmer");
