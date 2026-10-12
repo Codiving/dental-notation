@@ -1,19 +1,19 @@
-import { FdiTeethWithTmp } from "../fdi";
+import { FdiTeethWithPlaceholder } from "../fdi";
 import {
   PALMER_TEETH,
-  PalmerBabyTeeth,
+  PalmerDeciduousTeeth,
   PalmerTeeth,
-  PalmerTeethWithTmp
+  PalmerTeethWithPlaceholder
 } from "../palmer";
-import { UniversalTeethWithTmp } from "../universal";
+import { UniversalTeethWithPlaceholder } from "../universal";
 import {
   groupConsecutiveNumbers,
   mergeTeethIndividual,
   mergeTeethRange
 } from "./common";
 
-export const PALMER_TO_FDI_WITH_TMP: {
-  [key in PalmerTeethWithTmp]: FdiTeethWithTmp;
+export const PALMER_TO_FDI_WITH_PLACEHOLDER: {
+  [key in PalmerTeethWithPlaceholder]: FdiTeethWithPlaceholder;
 } = {
   "8UR": 18,
   "7UR": 17,
@@ -81,8 +81,8 @@ export const PALMER_TO_FDI_WITH_TMP: {
   HLL: 78
 };
 
-export const PALMER_TO_UNIVERSAL_WITH_TMP: {
-  [key in PalmerTeethWithTmp]: UniversalTeethWithTmp;
+export const PALMER_TO_UNIVERSAL_WITH_PLACEHOLDER: {
+  [key in PalmerTeethWithPlaceholder]: UniversalTeethWithPlaceholder;
 } = {
   "8UR": "1",
   "7UR": "2",
@@ -243,28 +243,29 @@ const NUMBER_TO_PALMER: { [key in number]: PalmerTeeth } = {
   35: "8LL"
 };
 
-const ADULT_TO_BABY: { [key in PalmerTeeth]?: PalmerBabyTeeth } = {
-  "5UR": "EUR",
-  "4UR": "DUR",
-  "3UR": "CUR",
-  "2UR": "BUR",
-  "1UR": "AUR",
-  "1UL": "AUL",
-  "2UL": "BUL",
-  "3UL": "CUL",
-  "4UL": "DUL",
-  "5UL": "EUL",
-  "5LR": "ELR",
-  "4LR": "DLR",
-  "3LR": "CLR",
-  "2LR": "BLR",
-  "1LR": "ALR",
-  "1LL": "ALL",
-  "2LL": "BLL",
-  "3LL": "CLL",
-  "4LL": "DLL",
-  "5LL": "ELL"
-};
+const PERMANENT_TO_DECIDUOUS: { [key in PalmerTeeth]?: PalmerDeciduousTeeth } =
+  {
+    "5UR": "EUR",
+    "4UR": "DUR",
+    "3UR": "CUR",
+    "2UR": "BUR",
+    "1UR": "AUR",
+    "1UL": "AUL",
+    "2UL": "BUL",
+    "3UL": "CUL",
+    "4UL": "DUL",
+    "5UL": "EUL",
+    "5LR": "ELR",
+    "4LR": "DLR",
+    "3LR": "CLR",
+    "2LR": "BLR",
+    "1LR": "ALR",
+    "1LL": "ALL",
+    "2LL": "BLL",
+    "3LL": "CLL",
+    "4LL": "DLL",
+    "5LL": "ELL"
+  };
 
 const getUpperLowerTeethNumber = (teethNumber: number[]) => {
   const upperTeeth: number[] = [];
@@ -291,15 +292,15 @@ const generateTeethGroup = (
       if (originTeeth.includes(tooth)) {
         return tooth;
       } else {
-        const babyTooth = ADULT_TO_BABY[tooth];
-        if (!babyTooth) throw Error("Error");
-        return babyTooth;
+        const deciduousTooth = PERMANENT_TO_DECIDUOUS[tooth];
+        if (!deciduousTooth) throw Error("Error");
+        return deciduousTooth;
       }
     });
   });
 };
 
-const getTeethString = (
+const formatPalmerTeeth = (
   teeth: PalmerTeeth[],
   type: "range" | "individual" = "range"
 ) => {
@@ -318,10 +319,8 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: any): tooth is PalmerTeeth => {
+const isPalmerTooth = (tooth: unknown): tooth is PalmerTeeth => {
   return PALMER_TEETH.includes(tooth as PalmerTeeth);
 };
 
-const isRealTooth = isExistTooth;
-
-export { getTeethString, isExistTooth, isRealTooth };
+export { formatPalmerTeeth, isPalmerTooth };

@@ -1,4 +1,12 @@
-import { getToothSlots } from "../slots";
+import { getToothSlots, ToothSlot } from "../slots";
+import type { NotationType } from "../types";
+import { switchDentition } from "../utils/switchDentition";
+
+const values = <T>(slots: ToothSlot<T>[]): T[] =>
+  slots.map(slot => (slot.kind === "tooth" ? slot.tooth : slot.placeholder));
+
+const positions = <T>(slots: ToothSlot<T>[]) =>
+  slots.map(({ quadrant, slot }) => `${quadrant}:${slot}`);
 
 describe("getToothSlots", () => {
   it("creates 32 real permanent tooth slots", () => {
@@ -18,9 +26,27 @@ describe("getToothSlots", () => {
     expect(slots.filter(slot => slot.kind === "tooth")).toHaveLength(20);
     expect(slots.filter(slot => slot.kind === "placeholder")).toHaveLength(12);
     expect(slots.slice(0, 3)).toEqual([
-      { quadrant: "upper-right", slot: 1, kind: "placeholder", tooth: null, placeholder: "A2" },
-      { quadrant: "upper-right", slot: 2, kind: "placeholder", tooth: null, placeholder: "A1" },
-      { quadrant: "upper-right", slot: 3, kind: "placeholder", tooth: null, placeholder: "A0" }
+      {
+        quadrant: "upper-right",
+        slot: 1,
+        kind: "placeholder",
+        tooth: null,
+        placeholder: "A2"
+      },
+      {
+        quadrant: "upper-right",
+        slot: 2,
+        kind: "placeholder",
+        tooth: null,
+        placeholder: "A1"
+      },
+      {
+        quadrant: "upper-right",
+        slot: 3,
+        kind: "placeholder",
+        tooth: null,
+        placeholder: "A0"
+      }
     ]);
   });
 
@@ -29,7 +55,40 @@ describe("getToothSlots", () => {
     const first = slots[0];
     const fourth = slots[3];
 
-    expect(first).toMatchObject({ kind: "placeholder", tooth: null, placeholder: "HUR" });
+    expect(first).toMatchObject({
+      kind: "placeholder",
+      tooth: null,
+      placeholder: "HUR"
+    });
     expect(fourth).toMatchObject({ kind: "tooth", tooth: "EUR" });
+  });
+
+  it("keeps permanent and deciduous slots in the same positions", () => {
+    const fdi = getToothSlots("fdi", "permanent");
+    const universal = getToothSlots("universal", "permanent");
+    const palmer = getToothSlots("palmer", "permanent");
+
+    expect(positions(getToothSlots("fdi", "deciduous"))).toEqual(
+      positions(fdi)
+    );
+    expect(switchDentition(values(fdi))).toEqual(
+      values(getToothSlots("fdi", "deciduous"))
+    );
+    expect(switchDentition(values(universal))).toEqual(
+      values(getToothSlots("universal", "deciduous"))
+    );
+    expect(switchDentition(values(palmer))).toEqual(
+      values(getToothSlots("palmer", "deciduous"))
+    );
+  });
+
+  it("accepts a notation chosen at runtime", () => {
+    const firstDeciduousSlot = (notation: NotationType) =>
+      getToothSlots(notation, "deciduous")[0];
+
+    expect(firstDeciduousSlot("palmer")).toMatchObject({
+      kind: "placeholder",
+      placeholder: "HUR"
+    });
   });
 });

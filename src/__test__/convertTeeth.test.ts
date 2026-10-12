@@ -221,13 +221,32 @@ describe("convertTeeth", () => {
     expect(convertTeeth([], "universal")).toEqual([]);
   });
 
-  test("not found", () => {
-    try {
-      convertTeeth(fdiNotFound, "universal");
-    } catch (error) {
-      expect((error as any).message).toBe(
-        `Not Found tooth : ${fdiNotFound[0]}`
-      );
-    }
+  test("throws for an unknown tooth", () => {
+    expect(() => convertTeeth(fdiNotFound, "universal")).toThrow(
+      `Invalid mixed or unknown tooth notation: ${fdiNotFound[0]}`
+    );
+  });
+
+  test("throws for a placeholder value", () => {
+    expect(() =>
+      convertTeeth([58] as unknown as FdiTeeth[], "universal")
+    ).toThrow("Invalid mixed or unknown tooth notation: 58");
+  });
+
+  test("throws for an unknown target notation", () => {
+    expect(() => convertTeeth([18], "wat" as any)).toThrow(
+      "Unknown target notation: wat"
+    );
+    expect(() => convertTeeth([], "wat" as any)).toThrow(
+      "Unknown target notation: wat"
+    );
+  });
+
+  test("returns a copy when converting to the same notation", () => {
+    const teeth: FdiTeeth[] = [18, 55];
+    const result = convertTeeth(teeth, "fdi");
+
+    expect(result).toEqual(teeth);
+    expect(result).not.toBe(teeth);
   });
 });

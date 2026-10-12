@@ -1,74 +1,19 @@
-import { NotationType, Teeth } from "..";
 import { FDI_TEETH, FdiTeeth } from "../fdi";
 import { PALMER_TEETH, PalmerTeeth } from "../palmer";
+import type { NotationType, TeethByNotation } from "../types";
 import { UNIVERSAL_TEETH, UniversalTeeth } from "../universal";
-import { isFdiTeeth, isUniversalTeeth } from "./common";
+import { convertNotation } from "./convertNotation";
 
-export function convertTeeth(
-  teeth: FdiTeeth[],
-  to: "fdi"
-): FdiTeeth[];
-export function convertTeeth(
-  teeth: FdiTeeth[],
-  to: "universal"
-): UniversalTeeth[];
-export function convertTeeth(
-  teeth: FdiTeeth[],
-  to: "palmer"
-): PalmerTeeth[];
-export function convertTeeth(
-  teeth: UniversalTeeth[],
-  to: "fdi"
-): FdiTeeth[];
-export function convertTeeth(
-  teeth: UniversalTeeth[],
-  to: "universal"
-): UniversalTeeth[];
-export function convertTeeth(
-  teeth: UniversalTeeth[],
-  to: "palmer"
-): PalmerTeeth[];
-export function convertTeeth(
-  teeth: PalmerTeeth[],
-  to: "fdi"
-): FdiTeeth[];
-export function convertTeeth(
-  teeth: PalmerTeeth[],
-  to: "universal"
-): UniversalTeeth[];
-export function convertTeeth(
-  teeth: PalmerTeeth[],
-  to: "palmer"
-): PalmerTeeth[];
-export function convertTeeth(
+const NOTATION_TEETH = {
+  fdi: FDI_TEETH,
+  universal: UNIVERSAL_TEETH,
+  palmer: PALMER_TEETH
+};
+
+/** Converts clinical teeth (permanent and deciduous) between notations. */
+export function convertTeeth<To extends NotationType>(
   teeth: FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[],
-  to: NotationType
-): FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[] {
-  if (!teeth.length) return [];
-
-  const tooth = teeth[0];
-
-  const fromTeeth = (isFdiTeeth(tooth)
-    ? FDI_TEETH
-    : isUniversalTeeth(tooth)
-    ? UNIVERSAL_TEETH
-    : PALMER_TEETH) as unknown as Teeth[];
-
-  const toTeeth = (to === "fdi"
-    ? FDI_TEETH
-    : to === "universal"
-    ? UNIVERSAL_TEETH
-    : PALMER_TEETH) as unknown as Teeth[];
-
-  const result = teeth.map(tooth => {
-    const index = fromTeeth.indexOf(tooth as Teeth);
-
-    if (index === -1) {
-      throw new Error(`Not Found tooth : ${tooth}`);
-    }
-
-    return toTeeth[index];
-  }) as FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[];
-
-  return result;
+  to: To
+): TeethByNotation[To][] {
+  return convertNotation(teeth, to, NOTATION_TEETH) as TeethByNotation[To][];
 }
