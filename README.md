@@ -38,24 +38,53 @@ pnpm add dental-notation
 
 ## Example
 
-#### function : convertTooth
+#### function : convertTeeth
 
 A function to convert between dental notation types: `FDI`, `Universal`, and `Palmer`, for tooth numbering.
 
-```
-import { convertTooth } from "dental-notation"
+```ts
+import {
+  convertTeeth,
+  FdiTeeth,
+  PalmerTeeth,
+  UniversalTeeth
+} from "dental-notation";
 
 const fdi: FdiTeeth[] = [18, 17];
 const universal: UniversalTeeth[] = ["1", "2"];
 const palmer: PalmerTeeth[] = ["EUR", "DUR"];
 
-const fdiToUniveral = convertTeeth(fdi, "universal");
-const universalToPalmer = convertTeeth(universal, "palmer");
-const palmerToFdi = convertTeeth(palmer, "fdi");
+convertTeeth(fdi, "universal"); // ["1", "2"]
+convertTeeth(universal, "palmer"); // ["8UR", "7UR"]
+convertTeeth(palmer, "fdi"); // [55, 54]
+```
 
-console.log("fdiToUniveral  : ", fdiToUniveral); // ['1', '2']
-console.log("universalToPalmer  : ", universalToPalmer); // ['8UR', '7UR']
-console.log("palmerToFdi  : ", palmerToFdi); // [55, 54]
+Unknown or mixed notation values throw `Invalid mixed or unknown tooth notation: <value>`.
+
+<br/>
+
+#### function : convertTeethWithPlaceholder
+
+Same as `convertTeeth`, but also accepts the display-only placeholder positions of the deciduous chart.
+
+```ts
+import { convertTeethWithPlaceholder } from "dental-notation";
+
+convertTeethWithPlaceholder([58, 55], "universal"); // ["A2", "A"]
+```
+
+<br/>
+
+#### function : switchDentition
+
+Switches permanent teeth to the deciduous positions and vice versa.
+
+```ts
+import { switchDentition } from "dental-notation";
+
+switchDentition([18]); // [58]
+switchDentition(["1"]); // ["A2"]
+switchDentition(["8UR"]); // ["HUR"]
 ```
 
 <br/>
@@ -67,26 +96,45 @@ When inputting FDI, Universal, or Palmer tooth, the tool performs string convers
 - **Range** : Displays only the first and last teeth in a continuous sequence.
 - **Individual** : Shows all teeth individually.
 
+```ts
+import { formatTeeth } from "dental-notation";
+
+formatTeeth([18, 17, 15]); // "#18-17, #15"
+formatTeeth(["1", "2", "5", "6"]); // "#1-2, #5-6"
+formatTeeth(["EUR", "DUR"]); // "EUR-DUR"
+
+formatTeeth([18, 17, 15], "individual"); // "#18, #17, #15"
+formatTeeth(["1", "2", "5", "6"], "individual"); // "#1, #2, #5, #6"
+formatTeeth(["EUR", "DUR"], "individual"); // "EUR, DUR"
 ```
-import { formatTeeth } from "dental-notation"
 
-const fdi: FdiTeeth[] = [18, 17, 15];
-const universal: UniversalTeeth[] = ["1", "2", "5", "6"];
-const palmer: PalmerTeeth[] = ["EUR", "DUR"];
+<br/>
 
-const fdiRange = formatTeeth(fdi);
-const universalRange = formatTeeth(universal);
-const palmerRange = formatTeeth(palmer);
+#### function : isFdiTooth / isUniversalTooth / isPalmerTooth
 
-console.log("fdiRange  : ", fdiRange); // #18-17, #15
-console.log("universalRange  : ", universalRange); // #1-2, #5-6
-console.log("palmerRange  : ", palmerRange); // EUR-DUR
+Checks whether a value is a real tooth. Placeholders return `false`.
 
-const fdiIndividual = formatTeeth(fdi, "individual");
-const universalIndividual = formatTeeth(universal, "individual");
-const palmerIndividual = formatTeeth(palmer, "individual");
+```ts
+import { isFdiTooth, isPalmerTooth, isUniversalTooth } from "dental-notation";
 
-console.log("fdiIndividual  : ", fdiIndividual); // #18, #17, #15
-console.log("universalIndividual  : ", universalIndividual); // #1, #2, #5, #6
-console.log("palmerIndividual  : ", palmerIndividual); // EUR, DUR
+isFdiTooth(18); // true
+isFdiTooth(58); // false (placeholder)
+isUniversalTooth("1"); // true
+isPalmerTooth("8UR"); // true
+```
+
+<br/>
+
+#### function : getToothSlots
+
+Returns 32 slots in chart order (upper-right, upper-left, lower-right, lower-left) for building a dental chart.  
+Permanent and deciduous slots share the same `quadrant` and `slot` positions.
+
+```ts
+import { getToothSlots } from "dental-notation";
+
+const slots = getToothSlots("fdi", "deciduous");
+
+slots[0]; // { quadrant: "upper-right", slot: 1, kind: "placeholder", tooth: null, placeholder: 58 }
+slots[3]; // { quadrant: "upper-right", slot: 4, kind: "tooth", tooth: 55 }
 ```
