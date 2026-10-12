@@ -1,45 +1,49 @@
-import { FdiTeethWithTmp, PalmerTeethWithTmp, UniversalTeethWithTmp } from "..";
-import { isExistTooth as isExistFdiTooth } from "../utils/fdi";
-import { isExistTooth as isExistPalmerTooth } from "../utils/palmer";
-import { isExistTooth as isExistUniversalTooth } from "../utils/universal";
+import {
+  FdiTeethWithPlaceholder,
+  PalmerTeethWithPlaceholder,
+  UniversalTeethWithPlaceholder,
+  isFdiTooth,
+  isPalmerTooth,
+  isUniversalTooth
+} from "..";
 
-describe("isExistTooth function", () => {
+describe("notation tooth validation", () => {
   describe("fdi", () => {
-    const fdiTooth: FdiTeethWithTmp = 18;
-    const nonFdiTooth: FdiTeethWithTmp = 88;
+    const fdiTooth: FdiTeethWithPlaceholder = 18;
+    const nonFdiTooth: FdiTeethWithPlaceholder = 88;
 
     it("18 is fdi tooth.", () => {
-      expect(isExistFdiTooth(fdiTooth)).toBeTruthy();
+      expect(isFdiTooth(fdiTooth)).toBeTruthy();
     });
 
     it("88 isn't fdi tooth.", () => {
-      expect(isExistFdiTooth(nonFdiTooth)).toBeFalsy();
+      expect(isFdiTooth(nonFdiTooth)).toBeFalsy();
     });
   });
 
   describe("universal", () => {
-    const universalTooth: UniversalTeethWithTmp = "K";
-    const nonUniversalTooth: UniversalTeethWithTmp = "K0";
+    const universalTooth: UniversalTeethWithPlaceholder = "K";
+    const nonUniversalTooth: UniversalTeethWithPlaceholder = "K0";
 
     it("K is universal tooth.", () => {
-      expect(isExistUniversalTooth(universalTooth)).toBeTruthy();
+      expect(isUniversalTooth(universalTooth)).toBeTruthy();
     });
 
     it("K0 isn't universal tooth.", () => {
-      expect(isExistUniversalTooth(nonUniversalTooth)).toBeFalsy();
+      expect(isUniversalTooth(nonUniversalTooth)).toBeFalsy();
     });
   });
 
   describe("palmer", () => {
-    const palmerTooth: PalmerTeethWithTmp = "ELL";
-    const nonPalmerTooth: PalmerTeethWithTmp = "FLL";
+    const palmerTooth: PalmerTeethWithPlaceholder = "ELL";
+    const nonPalmerTooth: PalmerTeethWithPlaceholder = "FLL";
 
     it("ELL is palmer tooth.", () => {
-      expect(isExistPalmerTooth(palmerTooth)).toBeTruthy();
+      expect(isPalmerTooth(palmerTooth)).toBeTruthy();
     });
 
     it("FLL isn't palmer tooth.", () => {
-      expect(isExistPalmerTooth(nonPalmerTooth)).toBeFalsy();
+      expect(isPalmerTooth(nonPalmerTooth)).toBeFalsy();
     });
   });
 });

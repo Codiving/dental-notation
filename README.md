@@ -60,7 +60,7 @@ console.log("palmerToFdi  : ", palmerToFdi); // [55, 54]
 
 <br/>
 
-#### function : getTeethString
+#### function : formatTeeth
 
 When inputting FDI, Universal, or Palmer tooth, the tool performs string conversion.
 
@@ -68,23 +68,23 @@ When inputting FDI, Universal, or Palmer tooth, the tool performs string convers
 - **Individual** : Shows all teeth individually.
 
 ```
-import { getTeethString } from "dental-notation"
+import { formatTeeth } from "dental-notation"
 
 const fdi: FdiTeeth[] = [18, 17, 15];
 const universal: UniversalTeeth[] = ["1", "2", "5", "6"];
 const palmer: PalmerTeeth[] = ["EUR", "DUR"];
 
-const fdiRange = getTeethString(fdi);
-const universalRange = getTeethString(universal);
-const palmerRange = getTeethString(palmer);
+const fdiRange = formatTeeth(fdi);
+const universalRange = formatTeeth(universal);
+const palmerRange = formatTeeth(palmer);
 
 console.log("fdiRange  : ", fdiRange); // #18-17, #15
 console.log("universalRange  : ", universalRange); // #1-2, #5-6
 console.log("palmerRange  : ", palmerRange); // EUR-DUR
 
-const fdiIndividual = getTeethString(fdi, "individual");
-const universalIndividual = getTeethString(universal, "individual");
-const palmerIndividual = getTeethString(palmer, "individual");
+const fdiIndividual = formatTeeth(fdi, "individual");
+const universalIndividual = formatTeeth(universal, "individual");
+const palmerIndividual = formatTeeth(palmer, "individual");
 
 console.log("fdiIndividual  : ", fdiIndividual); // #18, #17, #15
 console.log("universalIndividual  : ", universalIndividual); // #1, #2, #5, #6

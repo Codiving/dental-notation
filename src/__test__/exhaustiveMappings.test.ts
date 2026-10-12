@@ -1,10 +1,10 @@
 import {
-  FDI_BABY_TEETH_WITH_TMP,
-  FDI_PRIMARY_TEETH,
-  PALMER_BABY_TEETH_WITH_TMP,
-  PALMER_PRIMARY_TEETH,
-  UNIVERSAL_BABY_TEETH_WITH_TMP,
-  UNIVERSAL_PRIMARY_TEETH,
+  FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER,
+  FDI_PERMANENT_TEETH,
+  PALMER_DECIDUOUS_TEETH_WITH_PLACEHOLDER,
+  PALMER_PERMANENT_TEETH,
+  UNIVERSAL_DECIDUOUS_TEETH_WITH_PLACEHOLDER,
+  UNIVERSAL_PERMANENT_TEETH,
   convertTeeth,
   convertTeethWithPlaceholder
 } from "..";
@@ -12,7 +12,7 @@ import { FdiTeeth } from "../fdi";
 
 describe("complete clinical notation mappings", () => {
   it("round-trips all 32 permanent teeth through every notation", () => {
-    const fdi = [...FDI_PRIMARY_TEETH];
+    const fdi = [...FDI_PERMANENT_TEETH];
     const universal = convertTeeth(fdi, "universal");
     const palmer = convertTeeth(universal, "palmer");
 
@@ -39,21 +39,21 @@ describe("complete clinical notation mappings", () => {
 describe("complete placeholder mappings", () => {
   it("round-trips every FDI placeholder value", () => {
     const universal = convertTeethWithPlaceholder(
-      [...FDI_BABY_TEETH_WITH_TMP],
+      [...FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER],
       "universal"
     );
     const palmer = convertTeethWithPlaceholder(universal, "palmer");
 
     expect(convertTeethWithPlaceholder(palmer, "fdi")).toEqual([
-      ...FDI_BABY_TEETH_WITH_TMP
+      ...FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER
     ]);
-    expect(universal).toEqual([...UNIVERSAL_BABY_TEETH_WITH_TMP]);
-    expect(palmer).toEqual([...PALMER_BABY_TEETH_WITH_TMP]);
+    expect(universal).toEqual([...UNIVERSAL_DECIDUOUS_TEETH_WITH_PLACEHOLDER]);
+    expect(palmer).toEqual([...PALMER_DECIDUOUS_TEETH_WITH_PLACEHOLDER]);
   });
 
   it("covers every placeholder-inclusive notation list", () => {
-    expect(FDI_BABY_TEETH_WITH_TMP).toHaveLength(32);
-    expect(UNIVERSAL_BABY_TEETH_WITH_TMP).toHaveLength(32);
-    expect(PALMER_BABY_TEETH_WITH_TMP).toHaveLength(32);
+    expect(FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER).toHaveLength(32);
+    expect(UNIVERSAL_DECIDUOUS_TEETH_WITH_PLACEHOLDER).toHaveLength(32);
+    expect(PALMER_DECIDUOUS_TEETH_WITH_PLACEHOLDER).toHaveLength(32);
   });
 });
