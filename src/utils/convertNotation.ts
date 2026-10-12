@@ -41,6 +41,9 @@ export const convertNotation = (
   to: NotationType,
   validTeeth: Record<NotationType, readonly TeethWithPlaceholder[]>
 ): TeethWithPlaceholder[] => {
+  if (!Object.prototype.hasOwnProperty.call(CONVERSION_TABLES, to)) {
+    throw new Error(`Unknown target notation: ${to}`);
+  }
   if (!teeth.length) return [];
 
   const from = (Object.keys(validTeeth) as NotationType[]).find(notation =>
@@ -54,6 +57,8 @@ export const convertNotation = (
     throw new Error(`Invalid mixed or unknown tooth notation: ${invalidTooth}`);
   }
 
-  const table = CONVERSION_TABLES[from][to];
-  return table ? teeth.map(tooth => table[tooth]) : [...teeth];
+  if (from === to) return [...teeth];
+
+  const table = CONVERSION_TABLES[from][to]!;
+  return teeth.map(tooth => table[tooth]);
 };

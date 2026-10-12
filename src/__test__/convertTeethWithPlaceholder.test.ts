@@ -39,6 +39,12 @@ describe("convertTeethWithPlaceholder", () => {
       convertTeethWithPlaceholder(["unknown"] as any, "fdi")
     ).toThrow("Invalid mixed or unknown tooth notation");
   });
+
+  it("rejects an unknown target notation", () => {
+    expect(() => convertTeethWithPlaceholder([58], "wat" as any)).toThrow(
+      "Unknown target notation: wat"
+    );
+  });
 });
 
 describe("switchDentition", () => {

@@ -232,4 +232,21 @@ describe("convertTeeth", () => {
       convertTeeth([58] as unknown as FdiTeeth[], "universal")
     ).toThrow("Invalid mixed or unknown tooth notation: 58");
   });
+
+  test("throws for an unknown target notation", () => {
+    expect(() => convertTeeth([18], "wat" as any)).toThrow(
+      "Unknown target notation: wat"
+    );
+    expect(() => convertTeeth([], "wat" as any)).toThrow(
+      "Unknown target notation: wat"
+    );
+  });
+
+  test("returns a copy when converting to the same notation", () => {
+    const teeth: FdiTeeth[] = [18, 55];
+    const result = convertTeeth(teeth, "fdi");
+
+    expect(result).toEqual(teeth);
+    expect(result).not.toBe(teeth);
+  });
 });
