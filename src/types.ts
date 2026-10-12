@@ -7,9 +7,18 @@ import type {
 
 export type NotationType = "fdi" | "universal" | "palmer";
 
-export type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
+export type TeethByNotation = {
+  fdi: FdiTeeth;
+  universal: UniversalTeeth;
+  palmer: PalmerTeeth;
+};
 
-export type TeethWithPlaceholder =
-  | FdiTeethWithPlaceholder
-  | UniversalTeethWithPlaceholder
-  | PalmerTeethWithPlaceholder;
+export type TeethWithPlaceholderByNotation = {
+  fdi: FdiTeethWithPlaceholder;
+  universal: UniversalTeethWithPlaceholder;
+  palmer: PalmerTeethWithPlaceholder;
+};
+
+export type Teeth = TeethByNotation[NotationType];
+
+export type TeethWithPlaceholder = TeethWithPlaceholderByNotation[NotationType];

@@ -7,6 +7,7 @@ import {
   UNIVERSAL_TEETH_WITH_PLACEHOLDER,
   UniversalTeethWithPlaceholder
 } from "../universal";
+import type { TeethWithPlaceholder } from "../types";
 import { convertTeethWithPlaceholder } from "./convertTeethWithPlaceholder";
 import { switchFdiDentition } from "./fdi";
 
@@ -30,10 +31,7 @@ export function switchDentition(
     | FdiTeethWithPlaceholder[]
     | UniversalTeethWithPlaceholder[]
     | PalmerTeethWithPlaceholder[]
-):
-  | FdiTeethWithPlaceholder[]
-  | UniversalTeethWithPlaceholder[]
-  | PalmerTeethWithPlaceholder[] {
+): TeethWithPlaceholder[] {
   if (!teeth.length) return [];
 
   const firstTooth = teeth[0];
@@ -51,10 +49,7 @@ export function switchDentition(
     throw new Error(`Not Found tooth : ${firstTooth}`);
   }
 
-  const fdiTeeth = convertTeethWithPlaceholder(
-    teeth,
-    "fdi"
-  ) as FdiTeethWithPlaceholder[];
+  const fdiTeeth = convertTeethWithPlaceholder(teeth, "fdi");
   const switchedTeeth = switchFdiDentition(fdiTeeth);
 
   return convertTeethWithPlaceholder(
