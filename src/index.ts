@@ -18,17 +18,17 @@ export { switchDentition } from "./utils/switchDentition";
 export {
   FDI_TO_PALMER_WITH_PLACEHOLDER,
   FDI_TO_UNIVERSAL_WITH_PLACEHOLDER,
-  isRealTooth as isFdiTooth
+  isFdiTooth
 } from "./utils/fdi";
 export {
   PALMER_TO_FDI_WITH_PLACEHOLDER,
   PALMER_TO_UNIVERSAL_WITH_PLACEHOLDER,
-  isRealTooth as isPalmerTooth
+  isPalmerTooth
 } from "./utils/palmer";
 export {
   UNIVERSAL_TO_FDI_WITH_PLACEHOLDER,
   UNIVERSAL_TO_PALMER_WITH_PLACEHOLDER,
-  isRealTooth as isUniversalTooth
+  isUniversalTooth
 } from "./utils/universal";
 
 export type NotationType = "fdi" | "universal" | "palmer";

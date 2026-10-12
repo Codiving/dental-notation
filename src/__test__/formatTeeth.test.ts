@@ -1,10 +1,10 @@
 import { FdiTeeth } from "../fdi";
 import { PalmerTeeth } from "../palmer";
 import { UniversalTeeth } from "../universal";
-import { getTeethString as getTeethStringFdi } from "../utils/fdi";
-import { getTeethString } from "../utils/getTeethString";
-import { getTeethString as getTeethStringPalmer } from "../utils/palmer";
-import { getTeethString as getTeethStringUniversal } from "../utils/universal";
+import { formatFdiTeeth } from "../utils/fdi";
+import { formatTeeth } from "../utils/formatTeeth";
+import { formatPalmerTeeth } from "../utils/palmer";
+import { formatUniversalTeeth } from "../utils/universal";
 
 const fdi1: FdiTeeth[] = [
   18, 17, 16, 15, 53, 12, 11, 61, 62, 63, 65, 26, 48, 47, 46, 45, 43, 42, 41,
@@ -207,84 +207,76 @@ const palmerRange2 =
   "6UR, 3UR-DUL, 6UL-8UL, 8LR-4LR, 2LR, 1LL, 3LL-5LL, 7LL-8LL";
 const palmerRange3 = "DUR-7UL, 8LR-5LR, 3LR, ALR, 2LL-4LL, 6LL-8LL";
 
-describe("getTeethString", () => {
+describe("formatTeeth", () => {
   test("fdi range", () => {
-    expect(getTeethString(fdi1)).toEqual(fdiRange1);
-    expect(getTeethString(fdi2, "range")).toBe(fdiRange2);
-    expect(getTeethString(fdi3, undefined, "#")).toEqual(fdiRange3);
+    expect(formatTeeth(fdi1)).toEqual(fdiRange1);
+    expect(formatTeeth(fdi2, "range")).toBe(fdiRange2);
+    expect(formatTeeth(fdi3, undefined, "#")).toEqual(fdiRange3);
   });
 
   test("fdi individual", () => {
-    expect(getTeethString(fdi1, "individual")).toEqual(fdiIndividual1);
-    expect(getTeethString(fdi2, "individual", undefined)).toEqual(
-      fdiIndividual2
-    );
-    expect(getTeethString(fdi3, "individual", "#")).toEqual(fdiIndividual3);
+    expect(formatTeeth(fdi1, "individual")).toEqual(fdiIndividual1);
+    expect(formatTeeth(fdi2, "individual", undefined)).toEqual(fdiIndividual2);
+    expect(formatTeeth(fdi3, "individual", "#")).toEqual(fdiIndividual3);
   });
 
   test("universal range", () => {
-    expect(getTeethString(universal1)).toEqual(universalRange1);
-    expect(getTeethString(universal2)).toEqual(universalRange2);
-    expect(getTeethString(universal3)).toEqual(universalRange3);
+    expect(formatTeeth(universal1)).toEqual(universalRange1);
+    expect(formatTeeth(universal2)).toEqual(universalRange2);
+    expect(formatTeeth(universal3)).toEqual(universalRange3);
   });
 
   test("universal individual", () => {
-    expect(getTeethString(universal1, "individual")).toEqual(
-      universalIndividual1
-    );
-    expect(getTeethString(universal2, "individual")).toEqual(
-      universalIndividual2
-    );
-    expect(getTeethString(universal3, "individual")).toEqual(
-      universalIndividual3
-    );
+    expect(formatTeeth(universal1, "individual")).toEqual(universalIndividual1);
+    expect(formatTeeth(universal2, "individual")).toEqual(universalIndividual2);
+    expect(formatTeeth(universal3, "individual")).toEqual(universalIndividual3);
   });
 
   test("palmer range", () => {
-    expect(getTeethString(palmer1)).toEqual(palmerRange1);
-    expect(getTeethString(palmer2)).toEqual(palmerRange2);
-    expect(getTeethString(palmer3)).toEqual(palmerRange3);
+    expect(formatTeeth(palmer1)).toEqual(palmerRange1);
+    expect(formatTeeth(palmer2)).toEqual(palmerRange2);
+    expect(formatTeeth(palmer3)).toEqual(palmerRange3);
   });
 
   test("palmer individual", () => {
-    expect(getTeethString(palmer1, "individual")).toEqual(palmerIndividual1);
-    expect(getTeethString(palmer2, "individual")).toEqual(palmerIndividual2);
-    expect(getTeethString(palmer3, "individual")).toEqual(palmerIndividual3);
+    expect(formatTeeth(palmer1, "individual")).toEqual(palmerIndividual1);
+    expect(formatTeeth(palmer2, "individual")).toEqual(palmerIndividual2);
+    expect(formatTeeth(palmer3, "individual")).toEqual(palmerIndividual3);
   });
 
   test("should return an empty string for an empty input array", () => {
-    expect(getTeethString([])).toBe("");
+    expect(formatTeeth([])).toBe("");
   });
 });
 
-describe("getTeethStringFdi", () => {
-  expect(getTeethStringFdi(fdi1)).toEqual(fdiRange1);
-  expect(getTeethStringFdi(fdi2, "range")).toBe(fdiRange2);
-  expect(getTeethStringFdi(fdi3, undefined, "#")).toEqual(fdiRange3);
+describe("formatFdiTeeth", () => {
+  expect(formatFdiTeeth(fdi1)).toEqual(fdiRange1);
+  expect(formatFdiTeeth(fdi2, "range")).toBe(fdiRange2);
+  expect(formatFdiTeeth(fdi3, undefined, "#")).toEqual(fdiRange3);
 });
 
-describe("getTeethStringUniversal", () => {
-  expect(getTeethStringUniversal(universal1)).toEqual(universalRange1);
-  expect(getTeethStringUniversal(universal2, "range")).toBe(universalRange2);
-  expect(getTeethStringUniversal(universal3, undefined, "#")).toEqual(
+describe("formatUniversalTeeth", () => {
+  expect(formatUniversalTeeth(universal1)).toEqual(universalRange1);
+  expect(formatUniversalTeeth(universal2, "range")).toBe(universalRange2);
+  expect(formatUniversalTeeth(universal3, undefined, "#")).toEqual(
     universalRange3
   );
 });
 
-describe("getTeethStringPalmer", () => {
-  expect(getTeethStringPalmer(palmer1)).toEqual(palmerRange1);
-  expect(getTeethStringPalmer(palmer2, "range")).toBe(palmerRange2);
-  expect(getTeethStringPalmer(palmer3, undefined)).toEqual(palmerRange3);
+describe("formatPalmerTeeth", () => {
+  expect(formatPalmerTeeth(palmer1)).toEqual(palmerRange1);
+  expect(formatPalmerTeeth(palmer2, "range")).toBe(palmerRange2);
+  expect(formatPalmerTeeth(palmer3, undefined)).toEqual(palmerRange3);
 });
 
-describe("getTeethStringPalmer not found", () => {
+describe("formatPalmerTeeth not found", () => {
   const palmer = ["1LL2"] as unknown as PalmerTeeth[];
 
-  expect(() => getTeethStringPalmer(palmer)).toThrow("Error");
+  expect(() => formatPalmerTeeth(palmer)).toThrow("Error");
 });
 
-describe("getTeethStringUniversal not found", () => {
+describe("formatUniversalTeeth not found", () => {
   const universal = ["1LL2"] as unknown as UniversalTeeth[];
 
-  expect(() => getTeethStringUniversal(universal)).toThrow("Error");
+  expect(() => formatUniversalTeeth(universal)).toThrow("Error");
 });

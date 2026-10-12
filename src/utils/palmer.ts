@@ -300,7 +300,7 @@ const generateTeethGroup = (
   });
 };
 
-const getTeethString = (
+const formatPalmerTeeth = (
   teeth: PalmerTeeth[],
   type: "range" | "individual" = "range"
 ) => {
@@ -319,10 +319,8 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: any): tooth is PalmerTeeth => {
+const isPalmerTooth = (tooth: unknown): tooth is PalmerTeeth => {
   return PALMER_TEETH.includes(tooth as PalmerTeeth);
 };
 
-const isRealTooth = isExistTooth;
-
-export { getTeethString, isExistTooth, isRealTooth };
+export { formatPalmerTeeth, isPalmerTooth };

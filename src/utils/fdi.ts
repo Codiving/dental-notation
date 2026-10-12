@@ -230,7 +230,7 @@ export const FDI_TO_PALMER_WITH_PLACEHOLDER: {
   78: "HLL"
 };
 
-export const switchTeethWithTmp = (
+export const switchFdiDentition = (
   teeth: FdiTeethWithPlaceholder[]
 ): FdiTeethWithPlaceholder[] => {
   const permanentTeeth: FdiPermanentTeeth[] = teeth.filter(tooth =>
@@ -348,7 +348,7 @@ const getFormattingIndividual = (
     .map(tooth => `${prefix}${getOriginTooth(orginTeeth, tooth)}`);
 };
 
-const getTeethString = (
+const formatFdiTeeth = (
   teeth: FdiTeeth[],
   type: "range" | "individual" = "range",
   prefix: string = "#"
@@ -414,10 +414,8 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: any): tooth is FdiTeeth => {
+const isFdiTooth = (tooth: unknown): tooth is FdiTeeth => {
   return FDI_TEETH.includes(tooth as FdiTeeth);
 };
 
-const isRealTooth = isExistTooth;
-
-export { getOriginTooth, getTeethString, isExistTooth, isRealTooth };
+export { formatFdiTeeth, getOriginTooth, isFdiTooth };

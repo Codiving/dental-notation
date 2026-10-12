@@ -2,24 +2,16 @@ import { NotationType, Teeth } from "..";
 import { FDI_TEETH, FdiTeeth } from "../fdi";
 import { PALMER_TEETH, PalmerTeeth } from "../palmer";
 import { UNIVERSAL_TEETH, UniversalTeeth } from "../universal";
-import { isFdiTeeth, isUniversalTeeth } from "./common";
+import { isFdiTooth } from "./fdi";
+import { isUniversalTooth } from "./universal";
 
-export function convertTeeth(
-  teeth: FdiTeeth[],
-  to: "fdi"
-): FdiTeeth[];
+export function convertTeeth(teeth: FdiTeeth[], to: "fdi"): FdiTeeth[];
 export function convertTeeth(
   teeth: FdiTeeth[],
   to: "universal"
 ): UniversalTeeth[];
-export function convertTeeth(
-  teeth: FdiTeeth[],
-  to: "palmer"
-): PalmerTeeth[];
-export function convertTeeth(
-  teeth: UniversalTeeth[],
-  to: "fdi"
-): FdiTeeth[];
+export function convertTeeth(teeth: FdiTeeth[], to: "palmer"): PalmerTeeth[];
+export function convertTeeth(teeth: UniversalTeeth[], to: "fdi"): FdiTeeth[];
 export function convertTeeth(
   teeth: UniversalTeeth[],
   to: "universal"
@@ -28,18 +20,12 @@ export function convertTeeth(
   teeth: UniversalTeeth[],
   to: "palmer"
 ): PalmerTeeth[];
-export function convertTeeth(
-  teeth: PalmerTeeth[],
-  to: "fdi"
-): FdiTeeth[];
+export function convertTeeth(teeth: PalmerTeeth[], to: "fdi"): FdiTeeth[];
 export function convertTeeth(
   teeth: PalmerTeeth[],
   to: "universal"
 ): UniversalTeeth[];
-export function convertTeeth(
-  teeth: PalmerTeeth[],
-  to: "palmer"
-): PalmerTeeth[];
+export function convertTeeth(teeth: PalmerTeeth[], to: "palmer"): PalmerTeeth[];
 export function convertTeeth(
   teeth: FdiTeeth[] | UniversalTeeth[] | PalmerTeeth[],
   to: NotationType
@@ -48,17 +34,17 @@ export function convertTeeth(
 
   const tooth = teeth[0];
 
-  const fromTeeth = (isFdiTeeth(tooth)
+  const fromTeeth = (isFdiTooth(tooth)
     ? FDI_TEETH
-    : isUniversalTeeth(tooth)
-    ? UNIVERSAL_TEETH
-    : PALMER_TEETH) as unknown as Teeth[];
+    : isUniversalTooth(tooth)
+      ? UNIVERSAL_TEETH
+      : PALMER_TEETH) as unknown as Teeth[];
 
   const toTeeth = (to === "fdi"
     ? FDI_TEETH
     : to === "universal"
-    ? UNIVERSAL_TEETH
-    : PALMER_TEETH) as unknown as Teeth[];
+      ? UNIVERSAL_TEETH
+      : PALMER_TEETH) as unknown as Teeth[];
 
   const result = teeth.map(tooth => {
     const index = fromTeeth.indexOf(tooth as Teeth);

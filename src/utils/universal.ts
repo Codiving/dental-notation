@@ -236,7 +236,7 @@ const generateTeethGroup = (
   });
 };
 
-const getTeethString = (
+const formatUniversalTeeth = (
   teeth: UniversalTeeth[],
   type: "range" | "individual" = "range",
   prefix: string = "#"
@@ -267,10 +267,8 @@ const getTeethString = (
   }
 };
 
-const isExistTooth = (tooth: any): tooth is UniversalTeeth => {
+const isUniversalTooth = (tooth: unknown): tooth is UniversalTeeth => {
   return UNIVERSAL_TEETH.includes(tooth as UniversalTeeth);
 };
 
-const isRealTooth = isExistTooth;
-
-export { generateTeethGroup, getTeethString, isExistTooth, isRealTooth };
+export { formatUniversalTeeth, generateTeethGroup, isUniversalTooth };

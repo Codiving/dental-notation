@@ -1,6 +1,6 @@
-import { FDI_TEETH, FdiTeeth } from "../fdi";
-import { PALMER_TEETH, PalmerTeeth } from "../palmer";
-import { UNIVERSAL_TEETH, UniversalTeeth } from "../universal";
+import { FdiTeeth } from "../fdi";
+import { PalmerTeeth } from "../palmer";
+import { UniversalTeeth } from "../universal";
 
 export const groupConsecutiveNumbers = <T extends number | FdiTeeth>(
   arr: T[]
@@ -49,16 +49,4 @@ export const mergeTeethIndividual = <T extends UniversalTeeth | PalmerTeeth>(
     .flat()
     .map(tooth => `${prefix}${tooth}`)
     .join(", ");
-};
-
-export const isFdiTeeth = (tooth: any): tooth is FdiTeeth => {
-  return FDI_TEETH.includes(tooth as FdiTeeth);
-};
-
-export const isUniversalTeeth = (tooth: any): tooth is UniversalTeeth => {
-  return UNIVERSAL_TEETH.includes(tooth as UniversalTeeth);
-};
-
-export const isPalmerTeeth = (tooth: any): tooth is PalmerTeeth => {
-  return PALMER_TEETH.includes(tooth as PalmerTeeth);
 };
