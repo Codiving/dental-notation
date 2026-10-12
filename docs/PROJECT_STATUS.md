@@ -103,10 +103,16 @@ const universal: UniversalTeeth[] = convertTeeth(fdi, "universal");
 const palmer: PalmerTeeth[] = convertTeeth(universal, "palmer");
 ```
 
-알 수 없는 값, placeholder, 서로 다른 notation이 섞인 입력은 다음 에러를 던집니다.
+알 수 없는 값, placeholder, 서로 다른 notation이 섞인 입력은 다음 에러를 던집니다. `convertTeethWithPlaceholder`와 `switchDentition`도 같은 메시지를 씁니다.
 
 ```text
 Invalid mixed or unknown tooth notation: <값>
+```
+
+대상 notation이 `"fdi"`, `"universal"`, `"palmer"`가 아니면 입력과 관계없이 다음 에러를 던집니다.
+
+```text
+Unknown target notation: <값>
 ```
 
 `convertTeeth`와 `convertTeethWithPlaceholder`는 같은 내부 함수(`utils/convertNotation.ts`)와 매핑 테이블을 사용하며, 허용하는 값의 범위만 다릅니다.
@@ -162,6 +168,8 @@ isPalmerTooth("8UR");
 const slots = getToothSlots("fdi", "deciduous");
 ```
 
+notation을 리터럴로 넘기면 notation별 `ToothSlot` 타입으로 추론됩니다. 치식도의 상태값처럼 `NotationType` 변수를 넘겨도 호출할 수 있습니다.
+
 반환값은 화면 순서(상악 우측 → 상악 좌측 → 하악 우측 → 하악 좌측)의 32개 슬롯이며, 실제 치아와 placeholder가 타입으로 구분됩니다.
 
 영구치와 유치는 같은 `quadrant`와 `slot`이 같은 화면 위치입니다. 따라서 치식도에서 dentition을 바꿔도 레이아웃은 그대로이고 값만 바뀝니다.
@@ -189,7 +197,7 @@ const slots = getToothSlots("fdi", "deciduous");
 
 ## 테스트 현황
 
-현재 전체 테스트는 49개입니다.
+현재 전체 테스트는 54개입니다.
 
 검증 범위:
 
@@ -199,7 +207,7 @@ const slots = getToothSlots("fdi", "deciduous");
 - FDI ↔ Universal ↔ Palmer round-trip
 - 슬롯 생성
 - notation별 타입 추론
-- 잘못된 입력 예외 처리 (알 수 없는 값, placeholder, 섞인 notation)
+- 잘못된 입력 예외 처리 (알 수 없는 값, placeholder, 섞인 notation, 알 수 없는 대상 notation)
 - 영구치/유치 슬롯 위치 정렬과 `switchDentition` 일치
 - public API export 목록
 
@@ -209,9 +217,12 @@ const slots = getToothSlots("fdi", "deciduous");
 npm test -- --runInBand
 npx tsc --noEmit
 npm run build
+npm run format:check
 ```
 
-현재 테스트, TypeScript 검사, 패키지 빌드가 모두 통과합니다.
+현재 테스트, TypeScript 검사, 패키지 빌드, 포맷 검사가 모두 통과합니다.
+
+코드 포맷은 `.prettierrc`(prettier 3.3.3, `trailingComma: none`, `arrowParens: avoid`)를 따르며 `npm run format`으로 적용합니다.
 
 ## 디렉터리 역할
 
