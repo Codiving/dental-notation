@@ -280,19 +280,11 @@ describe("getTeethStringPalmer", () => {
 describe("getTeethStringPalmer not found", () => {
   const palmer = ["1LL2"] as unknown as PalmerTeeth[];
 
-  try {
-    getTeethStringPalmer(palmer);
-  } catch (error) {
-    expect((error as any).message).toEqual("Error");
-  }
+  expect(() => getTeethStringPalmer(palmer)).toThrow("Error");
 });
 
 describe("getTeethStringUniversal not found", () => {
   const universal = ["1LL2"] as unknown as UniversalTeeth[];
 
-  try {
-    getTeethStringUniversal(universal);
-  } catch (error) {
-    expect((error as any).message).toEqual("Error");
-  }
+  expect(() => getTeethStringUniversal(universal)).toThrow("Error");
 });

@@ -25,17 +25,34 @@ export function convertTeethWithTmp(
     ? "universal"
     : "palmer";
 
+  const isValidInput =
+    fromNotation === "fdi"
+      ? (teeth as FdiTeethWithTmp[]).every(tooth =>
+          FDI_TEETH_WITH_TMP.includes(tooth)
+        )
+      : fromNotation === "universal"
+      ? (teeth as UniversalTeethWithTmp[]).every(tooth =>
+          UNIVERSAL_TEETH_WITH_TMP.includes(tooth)
+        )
+      : (teeth as PalmerTeethWithTmp[]).every(tooth =>
+          Object.prototype.hasOwnProperty.call(PALMER_TO_FDI_WITH_TMP, tooth)
+        );
+
+  if (!isValidInput) {
+    throw new Error(`Invalid mixed or unknown tooth notation`);
+  }
+
   switch (fromNotation) {
     case "fdi":
       if (to === "universal") {
-        return (teeth as FdiTeethWithTmp[]).map(tooth => {
-          return FDI_TO_UNIVERSAL_WITH_TMP[tooth];
-        });
+        return (teeth as FdiTeethWithTmp[]).map(tooth =>
+          FDI_TO_UNIVERSAL_WITH_TMP[tooth]
+        );
       }
       if (to === "palmer") {
-        return (teeth as FdiTeethWithTmp[]).map(tooth => {
-          return FDI_TO_PALMER_WITH_TMP[tooth];
-        });
+        return (teeth as FdiTeethWithTmp[]).map(tooth =>
+          FDI_TO_PALMER_WITH_TMP[tooth]
+        );
       }
       return teeth;
     case "universal":

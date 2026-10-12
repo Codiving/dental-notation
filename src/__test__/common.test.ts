@@ -60,9 +60,5 @@ describe("getOriginTooth function", () => {
 describe("generateTeethGroup function", () => {
   const universalTeeth = ["99"] as unknown as UniversalTeeth[];
 
-  try {
-    generateTeethGroup(universalTeeth, [[123]]);
-  } catch (error) {
-    expect((error as any).message).toEqual("Error");
-  }
+  expect(() => generateTeethGroup(universalTeeth, [[123]])).toThrow("Error");
 });

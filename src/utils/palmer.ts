@@ -147,7 +147,7 @@ export const PALMER_TO_UNIVERSAL_WITH_TMP: {
   ELL: "K",
   FLL: "K0",
   GLL: "K1",
-  HLL: "k2"
+  HLL: "K2"
 };
 
 const PALMER_TO_NUMBER: { [key in PalmerTeeth]: number } = {
