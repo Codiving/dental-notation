@@ -1,4 +1,4 @@
-import { NotationType } from "..";
+import type { NotationType } from "../types";
 import { FDI_TEETH_WITH_PLACEHOLDER, FdiTeethWithPlaceholder } from "../fdi";
 import { PalmerTeethWithPlaceholder } from "../palmer";
 import {

@@ -1,4 +1,4 @@
-import { NotationType, Teeth } from "..";
+import type { NotationType, Teeth } from "../types";
 import { FDI_TEETH, FdiTeeth } from "../fdi";
 import { PALMER_TEETH, PalmerTeeth } from "../palmer";
 import { UNIVERSAL_TEETH, UniversalTeeth } from "../universal";

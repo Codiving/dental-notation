@@ -34,8 +34,8 @@ import {
   UNIVERSAL_PERMANENT_TEETH_UPPER_RIGHT,
   UniversalTeethWithPlaceholder
 } from "./universal";
+import type { NotationType, TeethWithPlaceholder } from "./types";
 
-export type SlotNotation = "fdi" | "universal" | "palmer";
 export type Dentition = "permanent" | "deciduous";
 export type ToothQuadrant =
   | "upper-right"
@@ -114,9 +114,9 @@ export function getToothSlots(
   dentition: Dentition
 ): ToothSlot<PalmerTeethWithPlaceholder>[];
 export function getToothSlots(
-  notation: SlotNotation,
+  notation: NotationType,
   dentition: Dentition
-): ToothSlot<FdiTeethWithPlaceholder | UniversalTeethWithPlaceholder | PalmerTeethWithPlaceholder>[] {
+): ToothSlot<TeethWithPlaceholder>[] {
   switch (notation) {
     case "fdi":
       return makeNotationSlots(
