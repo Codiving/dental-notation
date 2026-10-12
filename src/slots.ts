@@ -34,7 +34,11 @@ import {
   UNIVERSAL_PERMANENT_TEETH_UPPER_RIGHT,
   UniversalTeethWithPlaceholder
 } from "./universal";
-import type { NotationType, TeethWithPlaceholder } from "./types";
+import type {
+  NotationType,
+  TeethWithPlaceholder,
+  TeethWithPlaceholderByNotation
+} from "./types";
 
 export type Dentition = "permanent" | "deciduous";
 export type ToothQuadrant =
@@ -101,18 +105,10 @@ const makeNotationSlots = <T extends ToothValue>(
   );
 };
 
-export function getToothSlots(
-  notation: "fdi",
+export function getToothSlots<N extends NotationType>(
+  notation: N,
   dentition: Dentition
-): ToothSlot<FdiTeethWithPlaceholder>[];
-export function getToothSlots(
-  notation: "universal",
-  dentition: Dentition
-): ToothSlot<UniversalTeethWithPlaceholder>[];
-export function getToothSlots(
-  notation: "palmer",
-  dentition: Dentition
-): ToothSlot<PalmerTeethWithPlaceholder>[];
+): ToothSlot<TeethWithPlaceholderByNotation[N]>[];
 export function getToothSlots(
   notation: NotationType,
   dentition: Dentition

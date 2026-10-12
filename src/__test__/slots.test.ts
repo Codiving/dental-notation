@@ -1,4 +1,5 @@
 import { getToothSlots, ToothSlot } from "../slots";
+import type { NotationType } from "../types";
 import { switchDentition } from "../utils/switchDentition";
 
 const values = <T>(slots: ToothSlot<T>[]): T[] =>
@@ -55,5 +56,15 @@ describe("getToothSlots", () => {
     expect(switchDentition(values(palmer))).toEqual(
       values(getToothSlots("palmer", "deciduous"))
     );
+  });
+
+  it("accepts a notation chosen at runtime", () => {
+    const firstDeciduousSlot = (notation: NotationType) =>
+      getToothSlots(notation, "deciduous")[0];
+
+    expect(firstDeciduousSlot("palmer")).toMatchObject({
+      kind: "placeholder",
+      placeholder: "HUR"
+    });
   });
 });
