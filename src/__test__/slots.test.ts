@@ -1,4 +1,11 @@
-import { getToothSlots } from "../slots";
+import { getToothSlots, ToothSlot } from "../slots";
+import { switchDentition } from "../utils/switchDentition";
+
+const values = <T>(slots: ToothSlot<T>[]): T[] =>
+  slots.map(slot => (slot.kind === "tooth" ? slot.tooth : slot.placeholder));
+
+const positions = <T>(slots: ToothSlot<T>[]) =>
+  slots.map(({ quadrant, slot }) => `${quadrant}:${slot}`);
 
 describe("getToothSlots", () => {
   it("creates 32 real permanent tooth slots", () => {
@@ -31,5 +38,22 @@ describe("getToothSlots", () => {
 
     expect(first).toMatchObject({ kind: "placeholder", tooth: null, placeholder: "HUR" });
     expect(fourth).toMatchObject({ kind: "tooth", tooth: "EUR" });
+  });
+
+  it("keeps permanent and deciduous slots in the same positions", () => {
+    const fdi = getToothSlots("fdi", "permanent");
+    const universal = getToothSlots("universal", "permanent");
+    const palmer = getToothSlots("palmer", "permanent");
+
+    expect(positions(getToothSlots("fdi", "deciduous"))).toEqual(positions(fdi));
+    expect(switchDentition(values(fdi))).toEqual(
+      values(getToothSlots("fdi", "deciduous"))
+    );
+    expect(switchDentition(values(universal))).toEqual(
+      values(getToothSlots("universal", "deciduous"))
+    );
+    expect(switchDentition(values(palmer))).toEqual(
+      values(getToothSlots("palmer", "deciduous"))
+    );
   });
 });
