@@ -477,3 +477,34 @@ export type {
   UniversalTeethNonExist,
   UniversalTeethWithTmp
 };
+
+export {
+  FDI_PERMANENT_TEETH,
+  FDI_DECIDUOUS_TEETH,
+  FDI_TEETH_WITH_PLACEHOLDER
+} from "./fdi";
+export type {
+  FdiPermanentTeeth,
+  FdiDeciduousTeeth,
+  FdiTeethWithPlaceholder
+} from "./fdi";
+export {
+  UNIVERSAL_PERMANENT_TEETH,
+  UNIVERSAL_DECIDUOUS_TEETH,
+  UNIVERSAL_TEETH_WITH_PLACEHOLDER
+} from "./universal";
+export type {
+  UniversalPermanentTeeth,
+  UniversalDeciduousTeeth,
+  UniversalTeethWithPlaceholder
+} from "./universal";
+export {
+  PALMER_PERMANENT_TEETH,
+  PALMER_DECIDUOUS_TEETH,
+  PALMER_TEETH_WITH_PLACEHOLDER
+} from "./palmer";
+export type {
+  PalmerPermanentTeeth,
+  PalmerDeciduousTeeth,
+  PalmerTeethWithPlaceholder
+} from "./palmer";

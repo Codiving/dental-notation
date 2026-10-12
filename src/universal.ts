@@ -1,3 +1,4 @@
+/** @deprecated Use the permanent/deciduous terminology instead. */
 export const UNIVERSAL_PRIMARY_TEETH_UPPER_RIGHT = [
   "1",
   "2",
@@ -79,6 +80,7 @@ export const UNIVERSAL_PRIMARY_TEETH = [
 ] as const;
 export type UniversalPrimaryTeeth = (typeof UNIVERSAL_PRIMARY_TEETH)[number];
 
+/** @deprecated Use the permanent/deciduous terminology instead. */
 export const UNIVERSAL_BABY_TEETH_UPPER_RIGHT = [
   "A",
   "B",
@@ -180,7 +182,7 @@ export const UNIVERSAL_BABY_TEETH_LOWER_RIGHT_WITH_TMP = [
 export const UNIVERSAL_BABY_TEETH_LOWER_LEFT_NON_EXIST = [
   "K0",
   "K1",
-  "k2"
+  "K2"
 ] as const;
 export const UNIVERSAL_BABY_TEETH_LOWER_LEFT_WITH_TMP = [
   ...UNIVERSAL_BABY_TEETH_LOWER_LEFT,
@@ -249,3 +251,14 @@ export const UNIVERSAL_TEETH_WITH_TMP = [
   ...UNIVERSAL_BABY_TEETH_WITH_TMP
 ] as const;
 export type UniversalTeethWithTmp = (typeof UNIVERSAL_TEETH_WITH_TMP)[number];
+
+// Preferred terminology. Keep the old names for backwards compatibility.
+export const UNIVERSAL_PERMANENT_TEETH = UNIVERSAL_PRIMARY_TEETH;
+export type UniversalPermanentTeeth = UniversalPrimaryTeeth;
+
+export const UNIVERSAL_DECIDUOUS_TEETH = UNIVERSAL_BABY_TEETH;
+export type UniversalDeciduousTeeth = UniversalBabyTeeth;
+
+// Display slots only; these are not additional clinical teeth.
+export const UNIVERSAL_TEETH_WITH_PLACEHOLDER = UNIVERSAL_TEETH_WITH_TMP;
+export type UniversalTeethWithPlaceholder = UniversalTeethWithTmp;

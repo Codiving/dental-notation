@@ -1,3 +1,4 @@
+/** @deprecated Use the permanent/deciduous terminology instead. */
 export const PALMER_PRIMARY_TEETH_UPPER_RIGHT = [
   "8UR",
   "7UR",
@@ -78,6 +79,7 @@ export const PALMER_PRIMARY_TEETH = [
 ] as const;
 export type PalmerPrimaryTeeth = (typeof PALMER_PRIMARY_TEETH)[number];
 
+/** @deprecated Use the permanent/deciduous terminology instead. */
 export const PALMER_BABY_TEETH_UPPER_RIGHT = [
   "EUR",
   "DUR",
@@ -245,3 +247,14 @@ export const PALMER_TEETH_WITH_TMP = [
   ...PALMER_BABY_TEETH_WITH_TMP
 ] as const;
 export type PalmerTeethWithTmp = (typeof PALMER_TEETH_WITH_TMP)[number];
+
+// Preferred terminology. Keep the old names for backwards compatibility.
+export const PALMER_PERMANENT_TEETH = PALMER_PRIMARY_TEETH;
+export type PalmerPermanentTeeth = PalmerPrimaryTeeth;
+
+export const PALMER_DECIDUOUS_TEETH = PALMER_BABY_TEETH;
+export type PalmerDeciduousTeeth = PalmerBabyTeeth;
+
+// Display slots only; these are not additional clinical teeth.
+export const PALMER_TEETH_WITH_PLACEHOLDER = PALMER_TEETH_WITH_TMP;
+export type PalmerTeethWithPlaceholder = PalmerTeethWithTmp;

@@ -1,3 +1,4 @@
+/** @deprecated Use the permanent/deciduous terminology instead. */
 export const FDI_PRIMARY_TEETH_UPPER_RIGHT = [
   18, 17, 16, 15, 14, 13, 12, 11
 ] as const;
@@ -49,6 +50,7 @@ export const FDI_PRIMARY_TEETH = [
 ] as const;
 export type FdiPrimaryTeeth = (typeof FDI_PRIMARY_TEETH)[number];
 
+/** @deprecated Use the permanent/deciduous terminology instead. */
 export const FDI_BABY_TEETH_UPPER_RIGHT = [55, 54, 53, 52, 51] as const;
 export const FDI_BABY_TEETH_UPPER_LEFT = [61, 62, 63, 64, 65] as const;
 export const FDI_BABY_TEETH_UPPER = [
@@ -198,3 +200,18 @@ export const FDI_TEETH_LOWER_LEFT_WITH_TMP = [
 ] as const;
 export type FdiTeethLowerLeftWithTmp =
   (typeof FDI_TEETH_LOWER_LEFT_WITH_TMP)[number];
+
+// Preferred terminology. `PRIMARY` was historically used for permanent teeth
+// in this package, although primary teeth conventionally means deciduous teeth.
+// The old names remain exported for backwards compatibility and are deprecated
+// aliases for consumers migrating to the names below.
+export const FDI_PERMANENT_TEETH = FDI_PRIMARY_TEETH;
+export type FdiPermanentTeeth = FdiPrimaryTeeth;
+
+export const FDI_DECIDUOUS_TEETH = FDI_BABY_TEETH;
+export type FdiDeciduousTeeth = FdiBabyTeeth;
+
+// These values are display slots for the three positions that do not exist in
+// the deciduous dentition. They are not valid clinical tooth numbers.
+export const FDI_TEETH_WITH_PLACEHOLDER = FDI_TEETH_WITH_TMP;
+export type FdiTeethWithPlaceholder = FdiTeethWithTmp;

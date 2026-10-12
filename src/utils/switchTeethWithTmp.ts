@@ -1,7 +1,9 @@
-import { isExistFdiTooth, isExistUniversalTooth } from "..";
-import { FdiTeethWithTmp } from "../fdi";
-import { PalmerTeethWithTmp } from "../palmer";
-import { UniversalTeethWithTmp } from "../universal";
+import { FDI_TEETH_WITH_TMP, FdiTeethWithTmp } from "../fdi";
+import { PALMER_TEETH_WITH_TMP, PalmerTeethWithTmp } from "../palmer";
+import {
+  UNIVERSAL_TEETH_WITH_TMP,
+  UniversalTeethWithTmp
+} from "../universal";
 import { convertTeethWithTmp } from "./convertTeethWithTmp";
 import { switchTeethWithTmp as switchTeethWithTmpFdi } from "./fdi";
 
@@ -15,16 +17,26 @@ export function switchTeethWithTmp(
 ): UniversalTeethWithTmp[];
 
 export function switchTeethWithTmp(
-  teeth: UniversalTeethWithTmp[]
-): UniversalTeethWithTmp[];
+  teeth: PalmerTeethWithTmp[]
+): PalmerTeethWithTmp[];
 
 export function switchTeethWithTmp(
   teeth: FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[]
 ): FdiTeethWithTmp[] | UniversalTeethWithTmp[] | PalmerTeethWithTmp[] {
   if (!teeth.length) return [];
 
-  const isFdi = isExistFdiTooth(teeth[0] as FdiTeethWithTmp);
-  const isUniversal = isExistUniversalTooth(teeth[0] as UniversalTeethWithTmp);
+  const firstTooth = teeth[0];
+  const isFdi = FDI_TEETH_WITH_TMP.includes(firstTooth as FdiTeethWithTmp);
+  const isUniversal = UNIVERSAL_TEETH_WITH_TMP.includes(
+    firstTooth as UniversalTeethWithTmp
+  );
+  const isPalmer = PALMER_TEETH_WITH_TMP.includes(
+    firstTooth as PalmerTeethWithTmp
+  );
+
+  if (!isFdi && !isUniversal && !isPalmer) {
+    throw new Error(`Not Found tooth : ${firstTooth}`);
+  }
 
   const fdiTeeth = convertTeethWithTmp(teeth, "fdi") as FdiTeethWithTmp[];
   const switchedTeeth = switchTeethWithTmpFdi(fdiTeeth);

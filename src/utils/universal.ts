@@ -80,7 +80,7 @@ export const UNIVERSAL_TO_FDI_WITH_TMP: {
   K: 75,
   K0: 76,
   K1: 77,
-  k2: 78
+  K2: 78
 };
 
 export const UNIVERSAL_TO_PALMER_WITH_TMP: {
@@ -149,7 +149,7 @@ export const UNIVERSAL_TO_PALMER_WITH_TMP: {
   K: "ELL",
   K0: "FLL",
   K1: "GLL",
-  k2: "HLL"
+  K2: "HLL"
 };
 
 const BABY_TO_ADULT: { [key in UniversalBabyTeeth]: UniversalPrimaryTeeth } = {

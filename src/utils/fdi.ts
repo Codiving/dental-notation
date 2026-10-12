@@ -158,7 +158,7 @@ export const FDI_TO_UNIVERSAL_WITH_TMP: {
   75: "K",
   76: "K0",
   77: "K1",
-  78: "k2"
+  78: "K2"
 };
 
 export const FDI_TO_PALMER_WITH_TMP: {
