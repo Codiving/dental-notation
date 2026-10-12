@@ -1,20 +1,20 @@
 import { convertTeethWithTmp } from "../utils/convertTeethWithTmp";
 import { switchTeethWithTmp } from "../utils/switchTeethWithTmp";
-import { FdiTeethWithTmp } from "../fdi";
-import { PalmerTeethWithTmp } from "../palmer";
-import { UniversalTeethWithTmp } from "../universal";
+import { FdiTeethWithPlaceholder } from "../fdi";
+import { PalmerTeethWithPlaceholder } from "../palmer";
+import { UniversalTeethWithPlaceholder } from "../universal";
 
 describe("convertTeethWithTmp", () => {
   it("infers the target array type", () => {
-    const universal: UniversalTeethWithTmp[] = convertTeethWithTmp(
+    const universal: UniversalTeethWithPlaceholder[] = convertTeethWithTmp(
       [58],
       "universal"
     );
-    const palmer: PalmerTeethWithTmp[] = convertTeethWithTmp(
+    const palmer: PalmerTeethWithPlaceholder[] = convertTeethWithTmp(
       universal,
       "palmer"
     );
-    const fdi: FdiTeethWithTmp[] = convertTeethWithTmp(palmer, "fdi");
+    const fdi: FdiTeethWithPlaceholder[] = convertTeethWithTmp(palmer, "fdi");
 
     expect(fdi).toEqual([58]);
   });

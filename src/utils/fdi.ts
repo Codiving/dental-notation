@@ -1,26 +1,26 @@
 import {
-  FDI_BABY_TEETH_WITH_TMP,
-  FDI_PRIMARY_TEETH,
-  FDI_PRIMARY_TEETH_LOWER_LEFT,
-  FDI_PRIMARY_TEETH_LOWER_RIGHT,
-  FDI_PRIMARY_TEETH_UPPER_LEFT,
-  FDI_PRIMARY_TEETH_UPPER_RIGHT,
+  FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER,
+  FDI_PERMANENT_TEETH,
+  FDI_PERMANENT_TEETH_LOWER_LEFT,
+  FDI_PERMANENT_TEETH_LOWER_RIGHT,
+  FDI_PERMANENT_TEETH_UPPER_LEFT,
+  FDI_PERMANENT_TEETH_UPPER_RIGHT,
   FDI_TEETH,
-  FdiBabyTeethWithTmp,
-  FdiPrimaryTeeth,
-  FdiPrimaryTeethLowerLeft,
-  FdiPrimaryTeethLowerRight,
-  FdiPrimaryTeethUpperLeft,
-  FdiPrimaryTeethUpperRight,
+  FdiDeciduousTeethWithPlaceholder,
+  FdiPermanentTeeth,
+  FdiPermanentTeethLowerLeft,
+  FdiPermanentTeethLowerRight,
+  FdiPermanentTeethUpperLeft,
+  FdiPermanentTeethUpperRight,
   FdiTeeth,
-  FdiTeethWithTmp
+  FdiTeethWithPlaceholder
 } from "../fdi";
-import { PalmerTeethWithTmp } from "../palmer";
-import { UniversalTeethWithTmp } from "../universal";
+import { PalmerTeethWithPlaceholder } from "../palmer";
+import { UniversalTeethWithPlaceholder } from "../universal";
 import { groupConsecutiveNumbers } from "./common";
 
-const PRIMARY_TO_BABY_WITH_TMP: {
-  [key in FdiPrimaryTeeth]: FdiBabyTeethWithTmp;
+const PERMANENT_TO_DECIDUOUS: {
+  [key in FdiPermanentTeeth]: FdiDeciduousTeethWithPlaceholder;
 } = {
   18: 58,
   17: 57,
@@ -55,8 +55,8 @@ const PRIMARY_TO_BABY_WITH_TMP: {
   37: 77,
   38: 78
 };
-const BABY_TO_PRIMARY_WITH_TMP: {
-  [key in FdiBabyTeethWithTmp]: FdiPrimaryTeeth;
+const DECIDUOUS_TO_PERMANENT: {
+  [key in FdiDeciduousTeethWithPlaceholder]: FdiPermanentTeeth;
 } = {
   58: 18,
   57: 17,
@@ -92,8 +92,8 @@ const BABY_TO_PRIMARY_WITH_TMP: {
   78: 38
 };
 
-export const FDI_TO_UNIVERSAL_WITH_TMP: {
-  [key in FdiTeethWithTmp]: UniversalTeethWithTmp;
+export const FDI_TO_UNIVERSAL_WITH_PLACEHOLDER: {
+  [key in FdiTeethWithPlaceholder]: UniversalTeethWithPlaceholder;
 } = {
   18: "1",
   17: "2",
@@ -161,8 +161,8 @@ export const FDI_TO_UNIVERSAL_WITH_TMP: {
   78: "K2"
 };
 
-export const FDI_TO_PALMER_WITH_TMP: {
-  [key in FdiTeethWithTmp]: PalmerTeethWithTmp;
+export const FDI_TO_PALMER_WITH_PLACEHOLDER: {
+  [key in FdiTeethWithPlaceholder]: PalmerTeethWithPlaceholder;
 } = {
   18: "8UR",
   17: "7UR",
@@ -231,61 +231,64 @@ export const FDI_TO_PALMER_WITH_TMP: {
 };
 
 export const switchTeethWithTmp = (
-  teeth: FdiTeethWithTmp[]
-): FdiTeethWithTmp[] => {
-  const primaryTeeth: FdiPrimaryTeeth[] = teeth.filter(tooth =>
-    FDI_PRIMARY_TEETH.includes(tooth as FdiPrimaryTeeth)
-  ) as FdiPrimaryTeeth[];
-  const babyTeethWithTmp: FdiBabyTeethWithTmp[] = teeth.filter(tooth =>
-    FDI_BABY_TEETH_WITH_TMP.includes(tooth as FdiBabyTeethWithTmp)
-  ) as FdiBabyTeethWithTmp[];
+  teeth: FdiTeethWithPlaceholder[]
+): FdiTeethWithPlaceholder[] => {
+  const permanentTeeth: FdiPermanentTeeth[] = teeth.filter(tooth =>
+    FDI_PERMANENT_TEETH.includes(tooth as FdiPermanentTeeth)
+  ) as FdiPermanentTeeth[];
+  const deciduousTeeth: FdiDeciduousTeethWithPlaceholder[] = teeth.filter(
+    tooth =>
+      FDI_DECIDUOUS_TEETH_WITH_PLACEHOLDER.includes(
+        tooth as FdiDeciduousTeethWithPlaceholder
+      )
+  ) as FdiDeciduousTeethWithPlaceholder[];
 
-  const resultPrimaryTeeth = babyTeethWithTmp.map(
-    tooth => BABY_TO_PRIMARY_WITH_TMP[tooth]
+  const toPermanent = deciduousTeeth.map(
+    tooth => DECIDUOUS_TO_PERMANENT[tooth]
   );
-  const resultBabyTeeth = primaryTeeth.map(
-    tooth => PRIMARY_TO_BABY_WITH_TMP[tooth]
+  const toDeciduous = permanentTeeth.map(
+    tooth => PERMANENT_TO_DECIDUOUS[tooth]
   );
 
-  return [...resultPrimaryTeeth, ...resultBabyTeeth];
+  return [...toPermanent, ...toDeciduous];
 };
 
-const convertAdultTooth = (tooth: FdiTeeth): FdiPrimaryTeeth => {
-  const adultTooth = tooth as FdiPrimaryTeeth;
+const toPermanentTooth = (tooth: FdiTeeth): FdiPermanentTeeth => {
+  const permanentTooth = tooth as FdiPermanentTeeth;
 
-  if (FDI_PRIMARY_TEETH.includes(adultTooth)) return adultTooth;
-  return (adultTooth - 40) as FdiPrimaryTeeth;
+  if (FDI_PERMANENT_TEETH.includes(permanentTooth)) return permanentTooth;
+  return (permanentTooth - 40) as FdiPermanentTeeth;
 };
 
 const isRightUpperTooth = (
   tooth: FdiTeeth
-): tooth is FdiPrimaryTeethUpperRight => {
-  return FDI_PRIMARY_TEETH_UPPER_RIGHT.includes(
-    tooth as FdiPrimaryTeethUpperRight
+): tooth is FdiPermanentTeethUpperRight => {
+  return FDI_PERMANENT_TEETH_UPPER_RIGHT.includes(
+    tooth as FdiPermanentTeethUpperRight
   );
 };
 
 const isRightLowerTooth = (
   tooth: FdiTeeth
-): tooth is FdiPrimaryTeethLowerRight => {
-  return FDI_PRIMARY_TEETH_LOWER_RIGHT.includes(
-    tooth as FdiPrimaryTeethLowerRight
+): tooth is FdiPermanentTeethLowerRight => {
+  return FDI_PERMANENT_TEETH_LOWER_RIGHT.includes(
+    tooth as FdiPermanentTeethLowerRight
   );
 };
 
 const isLeftUpperTooth = (
   tooth: FdiTeeth
-): tooth is FdiPrimaryTeethUpperLeft => {
-  return FDI_PRIMARY_TEETH_UPPER_LEFT.includes(
-    tooth as FdiPrimaryTeethUpperLeft
+): tooth is FdiPermanentTeethUpperLeft => {
+  return FDI_PERMANENT_TEETH_UPPER_LEFT.includes(
+    tooth as FdiPermanentTeethUpperLeft
   );
 };
 
 const isLeftLowerTooth = (
   tooth: FdiTeeth
-): tooth is FdiPrimaryTeethLowerLeft => {
-  return FDI_PRIMARY_TEETH_LOWER_LEFT.includes(
-    tooth as FdiPrimaryTeethLowerLeft
+): tooth is FdiPermanentTeethLowerLeft => {
+  return FDI_PERMANENT_TEETH_LOWER_LEFT.includes(
+    tooth as FdiPermanentTeethLowerLeft
   );
 };
 
@@ -350,17 +353,17 @@ const getTeethString = (
   type: "range" | "individual" = "range",
   prefix: string = "#"
 ) => {
-  const adultTeeth = teeth.map(convertAdultTooth).sort();
+  const permanentTeeth = teeth.map(toPermanentTooth).sort();
 
-  const adultLeftUpperTeeth = adultTeeth.filter(isLeftUpperTooth);
-  const adultRightUpperTeeth = adultTeeth.filter(isRightUpperTooth);
-  const adultLeftLowerTeeth = adultTeeth.filter(isLeftLowerTooth);
-  const adultRightLowerTeeth = adultTeeth.filter(isRightLowerTooth);
+  const permanentLeftUpperTeeth = permanentTeeth.filter(isLeftUpperTooth);
+  const permanentRightUpperTeeth = permanentTeeth.filter(isRightUpperTooth);
+  const permanentLeftLowerTeeth = permanentTeeth.filter(isLeftLowerTooth);
+  const permanentRightLowerTeeth = permanentTeeth.filter(isRightLowerTooth);
 
-  const upperLeftTeeth = groupConsecutiveNumbers(adultLeftUpperTeeth);
-  const upperRightTeeth = groupConsecutiveNumbers(adultRightUpperTeeth);
-  const lowerLeftTeeth = groupConsecutiveNumbers(adultLeftLowerTeeth);
-  const lowerRightTeeth = groupConsecutiveNumbers(adultRightLowerTeeth);
+  const upperLeftTeeth = groupConsecutiveNumbers(permanentLeftUpperTeeth);
+  const upperRightTeeth = groupConsecutiveNumbers(permanentRightUpperTeeth);
+  const lowerLeftTeeth = groupConsecutiveNumbers(permanentLeftLowerTeeth);
+  const lowerRightTeeth = groupConsecutiveNumbers(permanentRightLowerTeeth);
 
   if (type === "range") {
     const uLeftTeeth = getFormattingGroup(teeth, upperLeftTeeth, true, prefix);

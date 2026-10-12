@@ -1,12 +1,12 @@
-import { FdiTeethWithTmp } from "../fdi";
-import { PalmerTeethWithTmp } from "../palmer";
+import { FdiTeethWithPlaceholder } from "../fdi";
+import { PalmerTeethWithPlaceholder } from "../palmer";
 import {
-  UNIVERSAL_PRIMARY_TEETH,
+  UNIVERSAL_PERMANENT_TEETH,
   UNIVERSAL_TEETH,
-  UniversalBabyTeeth,
-  UniversalPrimaryTeeth,
+  UniversalDeciduousTeeth,
+  UniversalPermanentTeeth,
   UniversalTeeth,
-  UniversalTeethWithTmp
+  UniversalTeethWithPlaceholder
 } from "../universal";
 import {
   groupConsecutiveNumbers,
@@ -14,8 +14,8 @@ import {
   mergeTeethRange
 } from "./common";
 
-export const UNIVERSAL_TO_FDI_WITH_TMP: {
-  [key in UniversalTeethWithTmp]: FdiTeethWithTmp;
+export const UNIVERSAL_TO_FDI_WITH_PLACEHOLDER: {
+  [key in UniversalTeethWithPlaceholder]: FdiTeethWithPlaceholder;
 } = {
   "1": 18,
   "2": 17,
@@ -83,8 +83,8 @@ export const UNIVERSAL_TO_FDI_WITH_TMP: {
   K2: 78
 };
 
-export const UNIVERSAL_TO_PALMER_WITH_TMP: {
-  [key in UniversalTeethWithTmp]: PalmerTeethWithTmp;
+export const UNIVERSAL_TO_PALMER_WITH_PLACEHOLDER: {
+  [key in UniversalTeethWithPlaceholder]: PalmerTeethWithPlaceholder;
 } = {
   "1": "8UR",
   "2": "7UR",
@@ -152,7 +152,9 @@ export const UNIVERSAL_TO_PALMER_WITH_TMP: {
   K2: "HLL"
 };
 
-const BABY_TO_ADULT: { [key in UniversalBabyTeeth]: UniversalPrimaryTeeth } = {
+const DECIDUOUS_TO_PERMANENT: {
+  [key in UniversalDeciduousTeeth]: UniversalPermanentTeeth;
+} = {
   A: "4",
   B: "5",
   C: "6",
@@ -175,7 +177,9 @@ const BABY_TO_ADULT: { [key in UniversalBabyTeeth]: UniversalPrimaryTeeth } = {
   T: "29"
 } as const;
 
-const ADULT_TO_BABY: { [key in UniversalPrimaryTeeth]?: UniversalBabyTeeth } = {
+const PERMANENT_TO_DECIDUOUS: {
+  [key in UniversalPermanentTeeth]?: UniversalDeciduousTeeth;
+} = {
   "4": "A",
   "5": "B",
   "6": "C",
@@ -205,13 +209,13 @@ const sortUniversal = (tooth1: number, tooth2: number) => {
   return tooth2 - tooth1;
 };
 
-const convertAdultTooth = (tooth: UniversalTeeth): UniversalPrimaryTeeth => {
-  const adultTooth = tooth as UniversalPrimaryTeeth;
-  const babyTooth = tooth as UniversalBabyTeeth;
+const toPermanentTooth = (tooth: UniversalTeeth): UniversalPermanentTeeth => {
+  const permanentTooth = tooth as UniversalPermanentTeeth;
+  const deciduousTooth = tooth as UniversalDeciduousTeeth;
 
-  if (UNIVERSAL_PRIMARY_TEETH.includes(adultTooth)) return adultTooth;
+  if (UNIVERSAL_PERMANENT_TEETH.includes(permanentTooth)) return permanentTooth;
 
-  const result = BABY_TO_ADULT[babyTooth];
+  const result = DECIDUOUS_TO_PERMANENT[deciduousTooth];
   if (!result) throw Error("Error");
   return result;
 };
@@ -222,9 +226,9 @@ const generateTeethGroup = (
 ) => {
   return teethNumber.map(group => {
     return group.map(_tooth => {
-      const tooth = String(_tooth) as UniversalPrimaryTeeth;
+      const tooth = String(_tooth) as UniversalPermanentTeeth;
       if (originTeeth.includes(tooth)) return tooth as UniversalTeeth;
-      const result = ADULT_TO_BABY[tooth];
+      const result = PERMANENT_TO_DECIDUOUS[tooth];
 
       if (!result) throw Error("Error");
       return result as UniversalTeeth;
@@ -237,7 +241,7 @@ const getTeethString = (
   type: "range" | "individual" = "range",
   prefix: string = "#"
 ) => {
-  const sortedTeeth = teeth.map(convertAdultTooth).map(tooth => Number(tooth));
+  const sortedTeeth = teeth.map(toPermanentTooth).map(tooth => Number(tooth));
 
   const upperTeethNumber: number[] = sortedTeeth.filter(tooth => tooth < 17);
   const lowerTeethNumber: number[] = sortedTeeth.filter(tooth => tooth >= 17);

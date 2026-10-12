@@ -1,23 +1,35 @@
+import type { FdiTeeth, FdiTeethWithPlaceholder } from "./fdi";
+import type { PalmerTeeth, PalmerTeethWithPlaceholder } from "./palmer";
 import type {
-  FdiTeeth,
-  FdiTeethWithPlaceholder,
-  PalmerTeeth,
-  PalmerTeethWithPlaceholder,
   UniversalTeeth,
   UniversalTeethWithPlaceholder
-} from "./naming";
+} from "./universal";
 
-export * from "./naming";
+export * from "./fdi";
+export * from "./palmer";
 export * from "./slots";
+export * from "./universal";
 
 export { convertTeeth } from "./utils/convertTeeth";
 export { convertTeethWithPlaceholder } from "./utils/convertTeethWithPlaceholder";
 export { formatTeeth } from "./utils/formatTeeth";
 export { switchDentition } from "./utils/switchDentition";
 
-export { isRealTooth as isFdiTooth } from "./utils/fdi";
-export { isRealTooth as isPalmerTooth } from "./utils/palmer";
-export { isRealTooth as isUniversalTooth } from "./utils/universal";
+export {
+  FDI_TO_PALMER_WITH_PLACEHOLDER,
+  FDI_TO_UNIVERSAL_WITH_PLACEHOLDER,
+  isRealTooth as isFdiTooth
+} from "./utils/fdi";
+export {
+  PALMER_TO_FDI_WITH_PLACEHOLDER,
+  PALMER_TO_UNIVERSAL_WITH_PLACEHOLDER,
+  isRealTooth as isPalmerTooth
+} from "./utils/palmer";
+export {
+  UNIVERSAL_TO_FDI_WITH_PLACEHOLDER,
+  UNIVERSAL_TO_PALMER_WITH_PLACEHOLDER,
+  isRealTooth as isUniversalTooth
+} from "./utils/universal";
 
 export type NotationType = "fdi" | "universal" | "palmer";
 export type Teeth = FdiTeeth | UniversalTeeth | PalmerTeeth;
