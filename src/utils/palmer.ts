@@ -322,4 +322,6 @@ const isExistTooth = (tooth: any): tooth is PalmerTeeth => {
   return PALMER_TEETH.includes(tooth as PalmerTeeth);
 };
 
-export { getTeethString, isExistTooth };
+const isRealTooth = isExistTooth;
+
+export { getTeethString, isExistTooth, isRealTooth };

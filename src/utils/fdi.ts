@@ -415,4 +415,6 @@ const isExistTooth = (tooth: any): tooth is FdiTeeth => {
   return FDI_TEETH.includes(tooth as FdiTeeth);
 };
 
-export { getOriginTooth, getTeethString, isExistTooth };
+const isRealTooth = isExistTooth;
+
+export { getOriginTooth, getTeethString, isExistTooth, isRealTooth };

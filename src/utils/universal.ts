@@ -267,4 +267,6 @@ const isExistTooth = (tooth: any): tooth is UniversalTeeth => {
   return UNIVERSAL_TEETH.includes(tooth as UniversalTeeth);
 };
 
-export { generateTeethGroup, getTeethString, isExistTooth };
+const isRealTooth = isExistTooth;
+
+export { generateTeethGroup, getTeethString, isExistTooth, isRealTooth };
